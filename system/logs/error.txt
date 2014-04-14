@@ -1,0 +1,8 @@
+2014-04-07 21:26:46 - PHP Notice:  Error: Could not load language english! in C:\xampp\htdocs\tmsconsole\system\library\language.php on line 39
+2014-04-08 23:17:21 - PHP Notice:  Error: Could not load language english! in C:\xampp\htdocs\tmsconsole\system\library\language.php on line 39
+2014-04-08 23:17:29 - PHP Notice:  Error: Could not load language english! in C:\xampp\htdocs\tmsconsole\system\library\language.php on line 39
+2014-04-09 0:19:34 - PHP Notice:  Error: Could not load language english! in C:\xampp\htdocs\tmsconsole\system\library\language.php on line 39
+2014-04-09 0:21:13 - PHP Notice:  Error: Could not load language english! in C:\xampp\htdocs\tmsconsole\system\library\language.php on line 39
+2014-04-09 0:21:28 - PHP Notice:  Error: Could not load language english! in C:\xampp\htdocs\tmsconsole\system\library\language.php on line 39
+2014-04-09 3:29:48 - PHP Notice:  Error: Could not load language english! in C:\xampp\htdocs\tmsconsole\system\library\language.php on line 39
+2014-04-09 7:58:31 - PHP Notice:  Undefined variable: title in C:\xampp\htdocs\tmsconsole\admin\view\template\common\login.tpl on line 8
