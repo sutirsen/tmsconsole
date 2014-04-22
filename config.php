@@ -1,5 +1,6 @@
 <?php
 // HTTP
+//Edited
 define('HTTP_SERVER', 'http://tms.console.com/');
 
 // HTTPS

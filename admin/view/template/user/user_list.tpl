@@ -1,12 +1,4 @@
 <?php echo $header; ?>
-<script>
-function checkallTick(m)
-{
-	alert("Hi");
-	$('input[name*=\'selected\']').prop('checked', $('#maintick').prop( "checked" ));
-	alert("Hi2");
-}
-</script>
 <!-- BEGIN PAGE HEADER-->
 				<div class="row-fluid">
 					<div class="span12">  	
@@ -74,7 +66,7 @@ function checkallTick(m)
 						 <table class="table table-hover table-bordered table-striped">
 				          <thead>
 				            <tr>
-				              <th width="1" style="text-align: center;"><input id="maintick" type="checkbox" onclick="checkallTick(this)" /></th>
+				              <th width="1" style="text-align: center;"><input id="selectall" type="checkbox" /></th>
 				              <th <?php if ($sort == 'username') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'username') { ?>
 				                <a href="<?php echo $sort_username; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_username; ?></a>
 				                <?php } else { ?>
@@ -98,9 +90,9 @@ function checkallTick(m)
 				            <?php foreach ($users as $user) { ?>
 				            <tr>
 				              <td style="text-align: center;"><?php if ($user['selected']) { ?>
-				                <input type="checkbox" name="selected[]" value="<?php echo $user['user_id']; ?>" checked="checked" />
+				                <input type="checkbox" name="selected[]" value="<?php echo $user['user_id']; ?>" class="selectedId" checked="checked" />
 				                <?php } else { ?>
-				                <input type="checkbox" name="selected[]" value="<?php echo $user['user_id']; ?>" />
+				                <input type="checkbox" name="selected[]" value="<?php echo $user['user_id']; ?>" class="selectedId" />
 				                <?php } ?></td>
 				              <td class="left"><?php echo $user['username']; ?></td>
 				              <td class="left"><?php echo $user['status']; ?></td>

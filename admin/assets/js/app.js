@@ -1668,7 +1668,109 @@ var App = function () {
                 return false;
             }
         });
+        
+        
+    }
+    var handleUserRegistration = function() {
+        $('.userRegFrmHandle').validate({
+            errorElement: 'label', //default input error message container
+            errorClass: 'help-inline', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            ignore: "",
+            rules: {
+                username: {
+                	required: true,
+                	minlength: 3,
+                	maxlength: 20
+                },
+                firstname: {
+                	required: true,
+                	minlength: 1,
+                	maxlength: 32
+                },
+                lastname: {
+                	required: true,
+                	minlength: 1,
+                	maxlength: 32
+                },
+            	email: {
+                    email: true
+                },
+                password: {
+                	required: true
+                },
+                confirm: {
+                	equalTo: "#password"
+                }
+            },
 
+            messages: {
+                username: {
+                	required: "Username is required",
+                	minlength: "Minimum length for this field is 3",
+                	maxlength: "Maximum length for this field is 20"
+                },
+                firstname: {
+                	required: "Firstname is required",
+                	minlength: "Minimum length for this field is 1",
+                	maxlength: "Maximum length for this field is 32"
+                },
+                lastname: {
+                	required: "Lastname is required",
+                	minlength: "Minimum length for this field is 1",
+                	maxlength: "Maximum length for this field is 32"
+                },
+            	email: {
+                    required: "Email is required.",
+                    email: "Please provide a valid email address"
+                },
+                password: {
+                	required: "Please provide a password for this account"
+                },
+                confirm: {
+                	equalTo: "Please retype the password properly"
+                }
+            },
+
+            invalidHandler: function (event, validator) { //display error alert on form submit   
+
+            },
+
+            highlight: function (element) { // hightlight error inputs
+                $(element)
+                    .closest('.control-group').addClass('error'); // set error class to the control group
+            },
+
+            success: function (label) {
+                label.closest('.control-group').removeClass('error');
+                label.remove();
+            },
+
+            errorPlacement: function (error, element) {
+            	//alert(JSON.stringify(element.parent));
+                error.addClass('help-small no-left-padding').appendTo(element.parent());
+            }
+        });
+
+    }
+    var handleCheckAllTickboxes = function() {
+    	$('#selectall').click(function () {
+    		//alert(this.checked);
+    		if(this.checked)
+    		{
+    			$('.selectedId').attr('checked', 'checked');
+    		}
+    		else
+    		{
+    			$('.selectedId').attr('checked', '');
+    		}
+    	    
+    	});
+
+    	$('.selectedId').change(function () {
+    	    var check = ($('.selectedId').filter(":checked").length == $('.selectedId').length);
+    	    $('#selectall').prop("checked", check);
+    	});
     }
     var handleFixInputPlaceholderForIE = function () {
         //fix html5 placeholder attribute for ie7 & ie8
@@ -3286,9 +3388,11 @@ var App = function () {
             handleGoTop(); //handles scroll to top functionality in the footer
             handleAccordions(); //handles accordions
             handleFormWizards(); // handles form wizards
+            handleCheckAllTickboxes(); //handle tickboxes
             
             //Initializing global form handlers
             handleForgottenPassword();
+            handleUserRegistration();
         },
 
         // login page setup
