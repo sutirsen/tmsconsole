@@ -1,6 +1,7 @@
 <?php
 // HTTP
 //Edited
+//Edited for GIT
 define('HTTP_SERVER', 'http://tms.console.com/');
 
 // HTTPS
