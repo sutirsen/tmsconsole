@@ -1671,6 +1671,49 @@ var App = function () {
         
         
     }
+    var handleUserGroupEntry = function() {
+    	
+    	$('.userGrpRegFrmHandle').validate({
+            errorElement: 'label', //default input error message container
+            errorClass: 'help-inline', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            ignore: "",
+            rules: {
+                name: {
+                	required: true,
+                	minlength: 3,
+                	maxlength: 20
+                }            },
+
+            messages: {
+                name: {
+                	required: "Name is required",
+                	minlength: "Minimum length for this field is 3",
+                	maxlength: "Maximum length for this field is 20"
+                }
+            },
+
+            invalidHandler: function (event, validator) { //display error alert on form submit   
+
+            },
+
+            highlight: function (element) { // hightlight error inputs
+                $(element)
+                    .closest('.control-group').addClass('error'); // set error class to the control group
+            },
+
+            success: function (label) {
+                label.closest('.control-group').removeClass('error');
+                label.remove();
+            },
+
+            errorPlacement: function (error, element) {
+            	//alert(JSON.stringify(element.parent));
+                error.addClass('help-small no-left-padding').appendTo(element.parent());
+            }
+        });
+
+    }
     var handleUserRegistration = function() {
         $('.userRegFrmHandle').validate({
             errorElement: 'label', //default input error message container
@@ -3387,6 +3430,7 @@ var App = function () {
             //Initializing global form handlers
             handleForgottenPassword();
             handleUserRegistration();
+            handleUserGroupEntry();
         },
 
         // login page setup
