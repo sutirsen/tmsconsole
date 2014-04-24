@@ -32,7 +32,7 @@
 					  <?php if ($error_warning) { ?>
 					  <div class="alert">
 									<button class="close" data-dismiss="alert"></button>
-									<strong>Warning!</strong> <?php echo $error_warning; ?>
+									<?php echo $error_warning; ?>
 					  </div>
 					  <?php } ?>
 					  <?php if ($success) { ?>

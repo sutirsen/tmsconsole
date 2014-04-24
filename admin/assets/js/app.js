@@ -1756,20 +1756,14 @@ var App = function () {
     var handleCheckAllTickboxes = function() {
     	$('#selectall').click(function () {
     		//alert(this.checked);
-    		if(this.checked)
-    		{
-    			$('.selectedId').attr('checked', 'checked');
-    		}
-    		else
-    		{
-    			$('.selectedId').attr('checked', '');
-    		}
-    	    
+    		$('.selectedId').prop('checked', this.checked);
+    		$.uniform.update();
     	});
 
     	$('.selectedId').change(function () {
     	    var check = ($('.selectedId').filter(":checked").length == $('.selectedId').length);
     	    $('#selectall').prop("checked", check);
+    	    $.uniform.update();
     	});
     }
     var handleFixInputPlaceholderForIE = function () {
