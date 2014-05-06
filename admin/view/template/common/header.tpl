@@ -158,6 +158,18 @@ $(document).ready(function(){
 						<li ><a href="<?php echo $user_group; ?>"><?php echo $text_user_group; ?></a></li>
 					</ul>
 				</li>
+				<li class="has-sub ">
+					<a href="javascript:;">
+					<i class="icon-cogs"></i> 
+					<span class="title"><?php echo $text_system; ?></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub">
+						<li ><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>
+						<li ><a href="<?php echo $error_log; ?>"><?php echo $text_error_log; ?></a></li>
+						<li ><a href="<?php echo $backup; ?>"><?php echo $text_backup; ?></a></li>
+					</ul>
+				</li>
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>
