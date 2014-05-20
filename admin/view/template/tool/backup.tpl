@@ -92,5 +92,4 @@
                   <!-- END SAMPLE FORM PORTLET-->
                </div>
             </div>
-
 <?php echo $footer; ?>
