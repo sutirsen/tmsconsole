@@ -20,7 +20,8 @@ class ControllerEmployeeEmployee extends Controller {
 		$this->load->model('employee/employee');
 	
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_user_user->addUser($this->request->post);
+			
+			$this->model_employee_employee->addEmployee($this->request->post);
 	
 			$this->session->data['success'] = $this->language->get('text_success');
 	
@@ -38,12 +39,45 @@ class ControllerEmployeeEmployee extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 	
-			$this->redirect($this->url->link('user/user', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('employee/employee', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 	
 		$this->getForm();
 	}
 	
+	public function delete() {
+		$this->language->load('employee/employee');
+	
+		$this->document->setTitle($this->language->get('heading_title'));
+	
+		$this->load->model('employee/employee');
+	
+		if (isset($this->request->post['selected']) && $this->validateDelete()) {
+			foreach ($this->request->post['selected'] as $emp_id) {
+				$this->model_employee_employee->deleteEmployee($emp_id);
+			}
+	
+			$this->session->data['success'] = $this->language->get('text_success');
+	
+			$url = '';
+	
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+	
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+	
+			if (isset($this->request->get['page'])) {
+				$url .= '&page=' . $this->request->get['page'];
+			}
+	
+			$this->redirect($this->url->link('employee/employee', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+		}
+	
+		$this->getList();
+	}
 	protected function getList() {
 		
 		//Default Sort Crieteria
@@ -166,6 +200,7 @@ class ControllerEmployeeEmployee extends Controller {
 		$this->data['column_dateofentry'] = $this->language->get('column_dateofentry');
 		$this->data['column_action'] = $this->language->get('column_action');
 	
+		 
 		$this->data['button_insert'] = $this->language->get('button_insert');
 		$this->data['button_delete'] = $this->language->get('button_delete');
 	
@@ -248,6 +283,9 @@ class ControllerEmployeeEmployee extends Controller {
 		$this->data['entry_passport'] = $this->language->get('entry_passport');
 		$this->data['entry_nationality'] = $this->language->get('entry_nationality');
 		$this->data['entry_address'] = $this->language->get('entry_address');
+
+		$this->data['optvalue_gender_male'] = $this->language->get("optvalue_gender_male");
+		$this->data['optvalue_gender_female'] = $this->language->get("optvalue_gender_female");
 		
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -258,36 +296,48 @@ class ControllerEmployeeEmployee extends Controller {
 			$this->data['error_warning'] = '';
 		}
 	
-		if (isset($this->error['username'])) {
-			$this->data['error_username'] = $this->error['username'];
+		if (isset($this->error['emp_first_name'])) {
+			$this->data['error_emp_first_name'] = $this->error['emp_first_name'];
 		} else {
-			$this->data['error_username'] = '';
+			$this->data['error_emp_first_name'] = '';
 		}
 	
-		if (isset($this->error['password'])) {
-			$this->data['error_password'] = $this->error['password'];
+		if (isset($this->error['emp_last_name'])) {
+			$this->data['error_emp_last_name'] = $this->error['emp_last_name'];
 		} else {
-			$this->data['error_password'] = '';
+			$this->data['error_emp_last_name'] = '';
+		}
+
+		if (isset($this->error['emp_dob'])) {
+			$this->data['error_emp_dob'] = $this->error['emp_dob'];
+		} else {
+			$this->data['error_emp_dob'] = '';
 		}
 	
-		if (isset($this->error['confirm'])) {
-			$this->data['error_confirm'] = $this->error['confirm'];
+		if (isset($this->error['emp_email'])) {
+			$this->data['error_emp_email'] = $this->error['emp_email'];
 		} else {
-			$this->data['error_confirm'] = '';
+			$this->data['error_emp_email'] = '';
 		}
-	
-		if (isset($this->error['firstname'])) {
-			$this->data['error_firstname'] = $this->error['firstname'];
+				
+		if (isset($this->error['emp_mob1'])) {
+			$this->data['error_emp_mob1'] = $this->error['emp_mob1'];
 		} else {
-			$this->data['error_firstname'] = '';
+			$this->data['error_emp_mob1'] = '';
 		}
-	
-		if (isset($this->error['lastname'])) {
-			$this->data['error_lastname'] = $this->error['lastname'];
+		
+		if (isset($this->error['emp_dateofjoining'])) {
+			$this->data['error_emp_dateofjoining'] = $this->error['emp_dateofjoining'];
 		} else {
-			$this->data['error_lastname'] = '';
+			$this->data['error_emp_dateofjoining'] = '';
 		}
-	
+		
+		if (isset($this->error['emp_address'])) {
+			$this->data['error_emp_address'] = $this->error['emp_address'];
+		} else {
+			$this->data['error_emp_address'] = '';
+		}
+		
 		$url = '';
 	
 		if (isset($this->request->get['sort'])) {
@@ -312,87 +362,145 @@ class ControllerEmployeeEmployee extends Controller {
 	
 		$this->data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('heading_title'),
-				'href'      => $this->url->link('user/user', 'token=' . $this->session->data['token'] . $url, 'SSL'),
+				'href'      => $this->url->link('employee/employee', 'token=' . $this->session->data['token'] . $url, 'SSL'),
 				'separator' => ' :: '
 		);
 	
-		if (!isset($this->request->get['user_id'])) {
-			$this->data['action'] = $this->url->link('user/user/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		if (!isset($this->request->get['emp_id'])) {
+			$this->data['action'] = $this->url->link('employee/employee/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$this->data['action'] = $this->url->link('user/user/update', 'token=' . $this->session->data['token'] . '&user_id=' . $this->request->get['user_id'] . $url, 'SSL');
+			$this->data['action'] = $this->url->link('employee/employee/update', 'token=' . $this->session->data['token'] . '&emp_id=' . $this->request->get['emp_id'] . $url, 'SSL');
 		}
 	
-		$this->data['cancel'] = $this->url->link('user/user', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['cancel'] = $this->url->link('employee/employee', 'token=' . $this->session->data['token'] . $url, 'SSL');
 	
-		if (isset($this->request->get['user_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-			$user_info = $this->model_user_user->getUser($this->request->get['user_id']);
+		if (isset($this->request->get['emp_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+			$employee_info = $this->model_employee_employee->getEmployee($this->request->get['emp_id']);
 		}
 	
-		if (isset($this->request->post['username'])) {
-			$this->data['username'] = $this->request->post['username'];
-		} elseif (!empty($user_info)) {
-			$this->data['username'] = $user_info['username'];
+		if (isset($this->request->post['emp_first_name'])) {
+			$this->data['emp_first_name'] = $this->request->post['emp_first_name'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_first_name'] = $employee_info['emp_first_name'];
 		} else {
-			$this->data['username'] = '';
+			$this->data['emp_first_name'] = '';
 		}
-	
-		if (isset($this->request->post['password'])) {
-			$this->data['password'] = $this->request->post['password'];
+		
+		if (isset($this->request->post['emp_middle_name'])) {
+			$this->data['emp_middle_name'] = $this->request->post['emp_middle_name'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_middle_name'] = $employee_info['emp_middle_name'];
 		} else {
-			$this->data['password'] = '';
+			$this->data['emp_middle_name'] = '';
 		}
-	
-		if (isset($this->request->post['confirm'])) {
-			$this->data['confirm'] = $this->request->post['confirm'];
+		
+		if (isset($this->request->post['emp_last_name'])) {
+			$this->data['emp_last_name'] = $this->request->post['emp_last_name'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_last_name'] = $employee_info['emp_last_name'];
 		} else {
-			$this->data['confirm'] = '';
+			$this->data['emp_last_name'] = '';
 		}
-	
-		if (isset($this->request->post['firstname'])) {
-			$this->data['firstname'] = $this->request->post['firstname'];
-		} elseif (!empty($user_info)) {
-			$this->data['firstname'] = $user_info['firstname'];
+		
+		if (isset($this->request->post['emp_dob'])) {
+			$this->data['emp_dob'] = $this->request->post['emp_dob'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_dob'] = $employee_info['emp_dob'];
 		} else {
-			$this->data['firstname'] = '';
+			$this->data['emp_dob'] = '';
 		}
-	
-		if (isset($this->request->post['lastname'])) {
-			$this->data['lastname'] = $this->request->post['lastname'];
-		} elseif (!empty($user_info)) {
-			$this->data['lastname'] = $user_info['lastname'];
+		
+		if (isset($this->request->post['emp_gender'])) {
+			$this->data['emp_gender'] = $this->request->post['emp_gender'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_gender'] = $employee_info['emp_gender'];
 		} else {
-			$this->data['lastname'] = '';
+			$this->data['emp_gender'] = '';
 		}
-	
-		if (isset($this->request->post['email'])) {
-			$this->data['email'] = $this->request->post['email'];
-		} elseif (!empty($user_info)) {
-			$this->data['email'] = $user_info['email'];
+		
+		if (isset($this->request->post['emp_email'])) {
+			$this->data['emp_email'] = $this->request->post['emp_email'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_email'] = $employee_info['emp_email'];
 		} else {
-			$this->data['email'] = '';
+			$this->data['emp_email'] = '';
 		}
-	
-		if (isset($this->request->post['user_group_id'])) {
-			$this->data['user_group_id'] = $this->request->post['user_group_id'];
-		} elseif (!empty($user_info)) {
-			$this->data['user_group_id'] = $user_info['user_group_id'];
+		
+		if (isset($this->request->post['emp_mob1'])) {
+			$this->data['emp_mob1'] = $this->request->post['emp_mob1'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_mob1'] = $employee_info['emp_mob1'];
 		} else {
-			$this->data['user_group_id'] = '';
+			$this->data['emp_mob1'] = '';
 		}
-	
-		$this->load->model('user/user_group');
-	
-		$this->data['user_groups'] = $this->model_user_user_group->getUserGroups();
-	
-		if (isset($this->request->post['status'])) {
-			$this->data['status'] = $this->request->post['status'];
-		} elseif (!empty($user_info)) {
-			$this->data['status'] = $user_info['status'];
+		
+		if (isset($this->request->post['emp_mob2'])) {
+			$this->data['emp_mob2'] = $this->request->post['emp_mob2'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_mob2'] = $employee_info['emp_mob2'];
 		} else {
-			$this->data['status'] = 0;
+			$this->data['emp_mob2'] = '';
 		}
-	
-		$this->template = 'user/user_form.tpl';
+		
+		if (isset($this->request->post['emp_land_phn'])) {
+			$this->data['emp_land_phn'] = $this->request->post['emp_land_phn'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_land_phn'] = $employee_info['emp_land_phn'];
+		} else {
+			$this->data['emp_land_phn'] = '';
+		}
+		
+		if (isset($this->request->post['emp_dateofjoining'])) {
+			$this->data['emp_dateofjoining'] = $this->request->post['emp_dateofjoining'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_dateofjoining'] = $employee_info['emp_dateofjoining'];
+		} else {
+			$this->data['emp_dateofjoining'] = '';
+		}
+		
+		if (isset($this->request->post['emp_designation'])) {
+			$this->data['emp_designation'] = $this->request->post['emp_designation'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_designation'] = $employee_info['emp_designation'];
+		} else {
+			$this->data['emp_designation'] = '';
+		}
+		
+		if (isset($this->request->post['emp_passport'])) {
+			$this->data['emp_passport'] = $this->request->post['emp_passport'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_passport'] = $employee_info['emp_passport'];
+		} else {
+			$this->data['emp_passport'] = '';
+		}
+		
+		if (isset($this->request->post['emp_nationality'])) {
+			$this->data['emp_nationality'] = $this->request->post['emp_nationality'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_nationality'] = $employee_info['emp_nationality'];
+		} else {
+			$this->data['emp_nationality'] = '';
+		}
+		
+		if (isset($this->request->post['emp_address'])) {
+			$this->data['emp_address'] = $this->request->post['emp_address'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_address'] = $employee_info['emp_address'];
+		} else {
+			$this->data['emp_address'] = '';
+		}
+		
+		if (isset($this->request->post['emp_image_url'])) {
+			$this->data['emp_image_url'] = $this->request->post['emp_image_url'];
+		} elseif (!empty($employee_info)) {
+			$this->data['emp_image_url'] = $employee_info['emp_image_url'];
+		} else {
+			$this->data['emp_image_url'] = '';
+		}
+		
+		
+
+		$this->template = 'employee/employee_form.tpl';
 		$this->children = array(
 				'common/header',
 				'common/footer'
@@ -402,42 +510,59 @@ class ControllerEmployeeEmployee extends Controller {
 	}
 	
 	protected function validateForm() {
-		if (!$this->user->hasPermission('modify', 'user/user')) {
+		if (!$this->user->hasPermission('modify', 'employee/employee')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 	
-		if ((utf8_strlen($this->request->post['username']) < 3) || (utf8_strlen($this->request->post['username']) > 20)) {
-			$this->error['username'] = $this->language->get('error_username');
+		if ((utf8_strlen($this->request->post['emp_first_name']) < 3) || (utf8_strlen($this->request->post['emp_first_name']) > 20)) {
+			$this->error['emp_first_name'] = $this->language->get('error_emp_first_name');
 		}
+
+		if ((utf8_strlen($this->request->post['emp_last_name']) < 1) || (utf8_strlen($this->request->post['emp_last_name']) > 20)) {
+			$this->error['emp_last_name'] = $this->language->get('error_emp_last_name');
+		}
+		
+		$employee_info = $this->model_employee_employee->getEmployeeByEmailid($this->request->post['emp_email']);
 	
-		$user_info = $this->model_user_user->getUserByUsername($this->request->post['username']);
-	
-		if (!isset($this->request->get['user_id'])) {
-			if ($user_info) {
+		if (isset($this->request->post['emp_email'])) {
+			if ($employee_info) {
 				$this->error['warning'] = $this->language->get('error_exists');
 			}
+			else
+			{
+				if ((utf8_strlen($this->request->post['emp_email']) < 6) || !filter_var($this->request->post['emp_email'], FILTER_VALIDATE_EMAIL)) {
+					$this->error['emp_email'] = $this->language->get('error_emp_email');
+				}
+			}
+		}
+	
+		if ((utf8_strlen($this->request->post['emp_dob']) == 0)) {
+			$this->error['emp_dob'] = $this->language->get('error_emp_dob');
+		}
+		
+		if ((utf8_strlen($this->request->post['emp_mob1']) < 10) || (utf8_strlen($this->request->post['emp_mob1']) > 13)) {
+			$this->error['emp_mob1'] = $this->language->get('error_emp_mob1');
+		}
+		
+		if ((utf8_strlen($this->request->post['emp_dateofjoining']) == 0)) {
+			$this->error['emp_dateofjoining'] = $this->language->get('error_emp_dateofjoining');
+		}
+		
+		if ((utf8_strlen($this->request->post['emp_address']) < 5) || (utf8_strlen($this->request->post['emp_address']) > 100)) {
+			$this->error['emp_address'] = $this->language->get('error_emp_address');
+		}
+		
+		
+		if (!$this->error) {
+			return true;
 		} else {
-			if ($user_info && ($this->request->get['user_id'] != $user_info['user_id'])) {
-				$this->error['warning'] = $this->language->get('error_exists');
-			}
+			return false;
 		}
+	}
 	
-		if ((utf8_strlen($this->request->post['firstname']) < 1) || (utf8_strlen($this->request->post['firstname']) > 32)) {
-			$this->error['firstname'] = $this->language->get('error_firstname');
-		}
-	
-		if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen($this->request->post['lastname']) > 32)) {
-			$this->error['lastname'] = $this->language->get('error_lastname');
-		}
-	
-		if ($this->request->post['password'] || (!isset($this->request->get['user_id']))) {
-			if ((utf8_strlen($this->request->post['password']) < 4) || (utf8_strlen($this->request->post['password']) > 20)) {
-				$this->error['password'] = $this->language->get('error_password');
-			}
-	
-			if ($this->request->post['password'] != $this->request->post['confirm']) {
-				$this->error['confirm'] = $this->language->get('error_confirm');
-			}
+	protected function validateDelete() {
+		if (!$this->user->hasPermission('modify', 'employee/employee')) {
+			$this->error['warning'] = $this->language->get('error_permission');
 		}
 	
 		if (!$this->error) {

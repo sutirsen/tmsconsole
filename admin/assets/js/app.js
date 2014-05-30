@@ -1714,6 +1714,93 @@ var App = function () {
         });
 
     }
+    
+    var handleEmployeeEntry = function() {
+    	$('.employeeInsert').validate({
+    		errorElement: 'label', //default input error message container
+            errorClass: 'help-inline', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            ignore: "",
+            rules: {
+            	emp_first_name: {
+                	required: true,
+                	minlength: 3,
+                	maxlength: 20
+                },
+                emp_last_name: {
+                	required: true,
+                	minlength: 1,
+                	maxlength: 20
+                },
+                emp_email: {
+                	required: true,
+                    email: true
+                },
+                emp_dob: {
+                	required: true
+                },
+                emp_mob1: {
+                	required: true
+                },
+                emp_address: {
+                	required: true,
+                	minlength: 5,
+                	maxlength: 100
+                },
+                emp_dateofjoining: {
+                	required: true
+                }
+            },
+
+            messages: {
+            	emp_first_name: {
+                	required: "First name is required",
+                	minlength: "Minimum length for this field is 3",
+                	maxlength: "Maximum length for this field is 20"
+                },
+                emp_last_name: {
+                	required: "Last name is required",
+                	minlength: "Minimum length for this field is 1",
+                	maxlength: "Maximum length for this field is 20"
+                },
+                emp_email: {
+                	required: "Email is required",
+                	email: "Please provide a correct email"
+                },
+                emp_dob: {
+                	required: "Date of birth can not be empty!"
+                },
+                emp_address: {
+                	required: "Address can not be empty!"
+                },
+                emp_mob1: {
+                	required: "Please provide atleast one mobile number!"
+                },
+                emp_dateofjoining: {
+                	required: "Please provide date of joining!"
+                }
+            },
+
+            invalidHandler: function (event, validator) { //display error alert on form submit   
+
+            },
+
+            highlight: function (element) { // hightlight error inputs
+                $(element)
+                    .closest('.control-group').addClass('error'); // set error class to the control group
+            },
+
+            success: function (label) {
+                label.closest('.control-group').removeClass('error');
+                label.remove();
+            },
+
+            errorPlacement: function (error, element) {
+            	//alert(JSON.stringify(element.parent));
+                error.addClass('help-small no-left-padding').appendTo(element.parent());
+            }
+    	});
+    }
     var handleUserRegistration = function() {
         $('.userRegFrmHandle').validate({
             errorElement: 'label', //default input error message container
@@ -2496,7 +2583,9 @@ var App = function () {
     var handleDateTimePickers = function () {
 
         if (jQuery().datepicker) {
-            $('.date-picker').datepicker();
+            $('.date-picker').datepicker({
+            	format: 'yyyy-mm-dd'
+            });
         }
 
         if (jQuery().timepicker) {
@@ -3431,6 +3520,7 @@ var App = function () {
             handleForgottenPassword();
             handleUserRegistration();
             handleUserGroupEntry();
+            handleEmployeeEntry();
         },
 
         // login page setup
