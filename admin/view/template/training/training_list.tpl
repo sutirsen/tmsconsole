@@ -98,15 +98,15 @@
 				            <?php foreach ($trainings as $training) { ?>
 				            <tr>
 				              <td style="text-align: center;"><?php if ($training['selected']) { ?>
-				                <input type="checkbox" name="selected[]" value="<?php echo $training['trng_code']; ?>" class="selectedId" checked="checked" />
+				                <input type="checkbox" name="selected[]" value="<?php echo $training['code']; ?>" class="selectedId" checked="checked" />
 				                <?php } else { ?>
-				                <input type="checkbox" name="selected[]" value="<?php echo $training['trng_code']; ?>" class="selectedId" />
+				                <input type="checkbox" name="selected[]" value="<?php echo $training['code']; ?>" class="selectedId" />
 				                <?php } ?></td>
-				              <td class="left"><?php echo $training['trng_name']; ?></td>
-				              <td class="left"><?php echo $training['trng_type']; ?></td>
-				              <td class="left"><?php echo $training['trng_date']; ?></td>
-				              <td class="left"><?php echo $training['trng_duration']; ?></td>
-				              <td class="left"><?php echo $training['emp_location']; ?></td>
+				              <td class="left"><?php echo $training['name']; ?></td>
+				              <td class="left"><?php echo $training['type']; ?></td>
+				              <td class="left"><?php echo $training['date']; ?></td>
+				              <td class="left"><?php echo $training['duration']; ?></td>
+				              <td class="left"><?php echo $training['location']; ?></td>
 				              <td class="right"><?php foreach ($training['action'] as $action) { ?>
 				                [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
 				                <?php } ?></td>

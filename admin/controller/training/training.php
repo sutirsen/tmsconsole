@@ -20,7 +20,7 @@ class ControllerTrainingTraining extends Controller {
 		$this->load->model('training/training');
 	
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_training_training->addtraining($this->request->post);
+			$this->model_training_training->addTraining($this->request->post);
 	
 			$this->session->data['success'] = $this->language->get('text_success');
 	
@@ -116,7 +116,7 @@ class ControllerTrainingTraining extends Controller {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
-			$sort = 'fullname';
+			$sort = 'trng_name';
 		}
 	
 		//Default ordering crieteria
@@ -177,7 +177,7 @@ class ControllerTrainingTraining extends Controller {
 	
 		$user_total = $this->model_training_training->getTotalTrainings();
 	
-		//$results = $this->model_training_training->getTrainings($data);
+		$results = $this->model_training_training->getTrainings($data);
 	
 		foreach ($results as $result) {
 			$action = array();
@@ -188,12 +188,12 @@ class ControllerTrainingTraining extends Controller {
 			);
 	
 			$this->data['trainings'][] = array(
-					'code'    		=> $result['code'],
-					'name'    		=> $result['name'],
-					'type'   		=> $result['type'],
-					'date'    		=> $result['date'],
-					'duration'    	=> $result['duration'],
-					'location'     	=> ($result['location'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
+					'code'    		=> $result['trng_code'],
+					'name'    		=> $result['trng_name'],
+					'type'   		=> $result['trng_type'],
+					'date'    		=> $result['trng_date'],
+					'duration'    	=> $result['trng_duration'],
+					'location'     	=> $result['trng_location'],
 					'selected'   	=> isset($this->request->post['selected']) && in_array($result['trng_code'], $this->request->post['selected']),
 					'action'     	=> $action
 			);
@@ -419,13 +419,14 @@ class ControllerTrainingTraining extends Controller {
 			$this->data['duration'] = '';
 		}
 		
+		$this->data['locations'] = $this->model_training_training->getTrainingLocations();
 		
 	if (isset($this->request->post['location'])) {
-			$this->data['location'] = $this->request->post['location'];
+			$this->data['trng_location'] = $this->request->post['location'];
 		} elseif (!empty($training_info)) {
-			$this->data['location'] = $training_info['location'];
+			$this->data['trng_location'] = $training_info['location'];
 		} else {
-			$this->data['location'] = 0;
+			$this->data['trng_location'] = 0;
 		}
 		//$this->load->model('user/user_group');
 	
@@ -491,6 +492,17 @@ class ControllerTrainingTraining extends Controller {
 			return false;
 		}
 	}
+
+	protected function validateDelete() {
+		if (!$this->user->hasPermission('modify', 'training/training')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
 	
+		if (!$this->error) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 } 
 ?>

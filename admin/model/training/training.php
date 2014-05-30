@@ -14,7 +14,7 @@ public function addTraining($data) {
 		return $query->row;
 	}
 	public function deleteTraining($trng_code) {
-		$this->db->query("DELETE FROM `" . DB_PREFIX . "training` WHERE trng_code = '" . (int)$code . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "training` WHERE trng_code = '" . (int)$trng_code . "'");
 	}
 	public function getTraining($code) {
 		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "training` WHERE trng_code = '" . (int)$code. "'");
@@ -32,14 +32,18 @@ public function addTraining($data) {
 			
 		);	
 
-		
+		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+			$sql .= " ORDER BY " . $data['sort'];
+		} else {
+			$sql .= " ORDER BY trng_name";
+		}
 
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
 			$sql .= " DESC";
 		} else {
 			$sql .= " ASC";
 		}
-
+		
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
@@ -61,6 +65,12 @@ public function addTraining($data) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "training`");
 
 		return $query->row['total'];
+	}
+	
+	public function getTrainingLocations(){
+		$query = $this->db->query("SELECT * FROM `".DB_PREFIX."training_locations` WHERE loc_status = 'A'");
+		
+		return $query->rows;
 	}
 }
 ?>

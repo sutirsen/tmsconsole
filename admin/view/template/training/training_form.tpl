@@ -56,15 +56,6 @@
                      <div class="portlet-body form">
                         <!-- BEGIN FORM-->
                         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form" class="form-horizontal userRegFrmHandle">
-                        <div class="control-group">
-                              <label class="control-label"><?php echo $entry_code; ?>*</label>
-                              <div class="controls">
-                                 <input type="text" class="span6 m-wrap" name="code" value="<?php echo $code; ?>" id="code" />
-                                 <?php if ($error_code) { ?>
-                                 <span class="help-inline" style="color:red;"><?php echo $error_code; ?></span>
-              					 <?php } ?>
-                              </div>
-                           </div>
                            <div class="control-group">
                               <label class="control-label"><?php echo $entry_name; ?>*</label>
                               <div class="controls">
@@ -105,10 +96,11 @@
                               <div class="controls">
              					 <select name="location" class="span6 m-wrap" id="location">
 					                <?php foreach ($locations as $location) { ?>
-					                <?php if ($location['trng_location'] == $trng_location) { ?>
-					                <option value="<?php echo $location['trng_location']; ?>" selected="selected"><?php echo $location['name']; ?></option>
+					                <?php  echo $location['location_name']; ?>
+					                <?php if ($location['location_name'] == $trng_location) { ?>
+					                <option value="<?php echo $location['location_name']; ?>" selected="selected"><?php echo $location['location_name']; ?></option>
 					                <?php } else { ?>
-					                <option value="<?php echo $location['trng_location']; ?>"><?php echo $location['name']; ?></option>
+					                <option value="<?php echo $location['location_name']; ?>"><?php echo $location['location_name']; ?></option>
 					                <?php } ?>
 					                <?php } ?>
 					              </select>
