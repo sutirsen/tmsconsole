@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.3
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Apr 22, 2014 at 07:38 AM
--- Server version: 5.5.27
--- PHP Version: 5.3.14
+-- Host: 127.0.0.1
+-- Generation Time: Jul 14, 2014 at 04:05 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -42,11 +43,6 @@ CREATE TABLE IF NOT EXISTS `tms_address` (
   PRIMARY KEY (`address_id`),
   KEY `customer_id` (`customer_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_address`
---
-
 
 -- --------------------------------------------------------
 
@@ -89,11 +85,6 @@ CREATE TABLE IF NOT EXISTS `tms_affiliate` (
   PRIMARY KEY (`affiliate_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_affiliate`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -109,11 +100,6 @@ CREATE TABLE IF NOT EXISTS `tms_affiliate_transaction` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`affiliate_transaction_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_affiliate_transaction`
---
-
 
 -- --------------------------------------------------------
 
@@ -434,11 +420,6 @@ CREATE TABLE IF NOT EXISTS `tms_category_filter` (
   PRIMARY KEY (`category_id`,`filter_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tms_category_filter`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -541,11 +522,6 @@ CREATE TABLE IF NOT EXISTS `tms_category_to_layout` (
   `layout_id` int(11) NOT NULL,
   PRIMARY KEY (`category_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_category_to_layout`
---
-
 
 -- --------------------------------------------------------
 
@@ -920,11 +896,6 @@ CREATE TABLE IF NOT EXISTS `tms_coupon_category` (
   PRIMARY KEY (`coupon_id`,`category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tms_coupon_category`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -941,11 +912,6 @@ CREATE TABLE IF NOT EXISTS `tms_coupon_history` (
   PRIMARY KEY (`coupon_history_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_coupon_history`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -958,11 +924,6 @@ CREATE TABLE IF NOT EXISTS `tms_coupon_product` (
   `product_id` int(11) NOT NULL,
   PRIMARY KEY (`coupon_product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_coupon_product`
---
-
 
 -- --------------------------------------------------------
 
@@ -988,9 +949,9 @@ CREATE TABLE IF NOT EXISTS `tms_currency` (
 --
 
 INSERT INTO `tms_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.59719998, 1, '2014-04-09 00:22:35'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-04-09 04:23:39'),
-(3, 'Euro', 'EUR', '', '€', '2', 0.72530001, 1, '2014-04-09 00:22:35');
+(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.58420002, 1, '2014-07-12 16:23:24'),
+(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-07-12 16:23:45'),
+(3, 'Euro', 'EUR', '', '€', '2', 0.73490000, 1, '2014-07-12 16:23:24');
 
 -- --------------------------------------------------------
 
@@ -1021,11 +982,6 @@ CREATE TABLE IF NOT EXISTS `tms_customer` (
   PRIMARY KEY (`customer_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_customer`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1038,11 +994,6 @@ CREATE TABLE IF NOT EXISTS `tms_customer_ban_ip` (
   PRIMARY KEY (`customer_ban_ip_id`),
   KEY `ip` (`ip`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_customer_ban_ip`
---
-
 
 -- --------------------------------------------------------
 
@@ -1059,11 +1010,6 @@ CREATE TABLE IF NOT EXISTS `tms_customer_field` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`customer_id`,`custom_field_id`,`custom_field_value_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_customer_field`
---
-
 
 -- --------------------------------------------------------
 
@@ -1124,11 +1070,6 @@ CREATE TABLE IF NOT EXISTS `tms_customer_history` (
   PRIMARY KEY (`customer_history_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_customer_history`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1144,11 +1085,6 @@ CREATE TABLE IF NOT EXISTS `tms_customer_ip` (
   KEY `ip` (`ip`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_customer_ip`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1163,11 +1099,6 @@ CREATE TABLE IF NOT EXISTS `tms_customer_online` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`ip`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_customer_online`
---
-
 
 -- --------------------------------------------------------
 
@@ -1185,11 +1116,6 @@ CREATE TABLE IF NOT EXISTS `tms_customer_reward` (
   PRIMARY KEY (`customer_reward_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_customer_reward`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1205,11 +1131,6 @@ CREATE TABLE IF NOT EXISTS `tms_customer_transaction` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_transaction_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_customer_transaction`
---
-
 
 -- --------------------------------------------------------
 
@@ -1228,11 +1149,6 @@ CREATE TABLE IF NOT EXISTS `tms_custom_field` (
   PRIMARY KEY (`custom_field_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_custom_field`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1246,11 +1162,6 @@ CREATE TABLE IF NOT EXISTS `tms_custom_field_description` (
   PRIMARY KEY (`custom_field_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tms_custom_field_description`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1262,11 +1173,6 @@ CREATE TABLE IF NOT EXISTS `tms_custom_field_to_customer_group` (
   `customer_group_id` int(11) NOT NULL,
   PRIMARY KEY (`custom_field_id`,`customer_group_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_custom_field_to_customer_group`
---
-
 
 -- --------------------------------------------------------
 
@@ -1281,11 +1187,6 @@ CREATE TABLE IF NOT EXISTS `tms_custom_field_value` (
   PRIMARY KEY (`custom_field_value_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_custom_field_value`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1299,11 +1200,6 @@ CREATE TABLE IF NOT EXISTS `tms_custom_field_value_description` (
   `name` varchar(128) NOT NULL,
   PRIMARY KEY (`custom_field_value_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_custom_field_value_description`
---
-
 
 -- --------------------------------------------------------
 
@@ -1320,11 +1216,6 @@ CREATE TABLE IF NOT EXISTS `tms_download` (
   PRIMARY KEY (`download_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_download`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1337,11 +1228,6 @@ CREATE TABLE IF NOT EXISTS `tms_download_description` (
   `name` varchar(64) NOT NULL,
   PRIMARY KEY (`download_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_download_description`
---
-
 
 -- --------------------------------------------------------
 
@@ -1369,11 +1255,6 @@ CREATE TABLE IF NOT EXISTS `tms_employee` (
   `date_added` datetime DEFAULT NULL,
   PRIMARY KEY (`emp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_employee`
---
-
 
 -- --------------------------------------------------------
 
@@ -1427,11 +1308,6 @@ CREATE TABLE IF NOT EXISTS `tms_filter` (
   PRIMARY KEY (`filter_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_filter`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1446,11 +1322,6 @@ CREATE TABLE IF NOT EXISTS `tms_filter_description` (
   PRIMARY KEY (`filter_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tms_filter_description`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1462,11 +1333,6 @@ CREATE TABLE IF NOT EXISTS `tms_filter_group` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`filter_group_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_filter_group`
---
-
 
 -- --------------------------------------------------------
 
@@ -1480,11 +1346,6 @@ CREATE TABLE IF NOT EXISTS `tms_filter_group_description` (
   `name` varchar(64) NOT NULL,
   PRIMARY KEY (`filter_group_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_filter_group_description`
---
-
 
 -- --------------------------------------------------------
 
@@ -1569,11 +1430,6 @@ CREATE TABLE IF NOT EXISTS `tms_information_to_layout` (
   `layout_id` int(11) NOT NULL,
   PRIMARY KEY (`information_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_information_to_layout`
---
-
 
 -- --------------------------------------------------------
 
@@ -1973,11 +1829,6 @@ CREATE TABLE IF NOT EXISTS `tms_order` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_order`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1995,11 +1846,6 @@ CREATE TABLE IF NOT EXISTS `tms_order_download` (
   PRIMARY KEY (`order_download_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_order_download`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -2015,11 +1861,6 @@ CREATE TABLE IF NOT EXISTS `tms_order_field` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`order_id`,`custom_field_id`,`custom_field_value_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_order_field`
---
-
 
 -- --------------------------------------------------------
 
@@ -2084,11 +1925,6 @@ CREATE TABLE IF NOT EXISTS `tms_order_fraud` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tms_order_fraud`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -2104,11 +1940,6 @@ CREATE TABLE IF NOT EXISTS `tms_order_history` (
   `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`order_history_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_order_history`
---
-
 
 -- --------------------------------------------------------
 
@@ -2127,11 +1958,6 @@ CREATE TABLE IF NOT EXISTS `tms_order_option` (
   `type` varchar(32) NOT NULL,
   PRIMARY KEY (`order_option_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_order_option`
---
-
 
 -- --------------------------------------------------------
 
@@ -2152,11 +1978,6 @@ CREATE TABLE IF NOT EXISTS `tms_order_product` (
   `reward` int(8) NOT NULL,
   PRIMARY KEY (`order_product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_order_product`
---
-
 
 -- --------------------------------------------------------
 
@@ -2188,11 +2009,6 @@ CREATE TABLE IF NOT EXISTS `tms_order_recurring` (
   PRIMARY KEY (`order_recurring_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_order_recurring`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -2207,11 +2023,6 @@ CREATE TABLE IF NOT EXISTS `tms_order_recurring_transaction` (
   `type` varchar(255) NOT NULL,
   PRIMARY KEY (`order_recurring_transaction_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_order_recurring_transaction`
---
-
 
 -- --------------------------------------------------------
 
@@ -2264,11 +2075,6 @@ CREATE TABLE IF NOT EXISTS `tms_order_total` (
   KEY `idx_orders_total_orders_id` (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_order_total`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -2290,11 +2096,6 @@ CREATE TABLE IF NOT EXISTS `tms_order_voucher` (
   `amount` decimal(15,4) NOT NULL,
   PRIMARY KEY (`order_voucher_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_order_voucher`
---
-
 
 -- --------------------------------------------------------
 
@@ -2470,11 +2271,6 @@ CREATE TABLE IF NOT EXISTS `tms_product_filter` (
   PRIMARY KEY (`product_id`,`filter_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tms_product_filter`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -2647,11 +2443,6 @@ CREATE TABLE IF NOT EXISTS `tms_product_profile` (
   PRIMARY KEY (`product_id`,`profile_id`,`customer_group_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tms_product_profile`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -2663,11 +2454,6 @@ CREATE TABLE IF NOT EXISTS `tms_product_recurring` (
   `store_id` int(11) NOT NULL,
   PRIMARY KEY (`product_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_product_recurring`
---
-
 
 -- --------------------------------------------------------
 
@@ -2817,11 +2603,6 @@ CREATE TABLE IF NOT EXISTS `tms_product_to_download` (
   PRIMARY KEY (`product_id`,`download_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tms_product_to_download`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -2834,11 +2615,6 @@ CREATE TABLE IF NOT EXISTS `tms_product_to_layout` (
   `layout_id` int(11) NOT NULL,
   PRIMARY KEY (`product_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_product_to_layout`
---
-
 
 -- --------------------------------------------------------
 
@@ -2899,11 +2675,6 @@ CREATE TABLE IF NOT EXISTS `tms_profile` (
   PRIMARY KEY (`profile_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_profile`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -2916,11 +2687,6 @@ CREATE TABLE IF NOT EXISTS `tms_profile_description` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`profile_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tms_profile_description`
---
-
 
 -- --------------------------------------------------------
 
@@ -2950,11 +2716,6 @@ CREATE TABLE IF NOT EXISTS `tms_return` (
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`return_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_return`
---
-
 
 -- --------------------------------------------------------
 
@@ -2993,11 +2754,6 @@ CREATE TABLE IF NOT EXISTS `tms_return_history` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`return_history_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_return_history`
---
-
 
 -- --------------------------------------------------------
 
@@ -3065,11 +2821,6 @@ CREATE TABLE IF NOT EXISTS `tms_review` (
   KEY `product_id` (`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_review`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -3084,7 +2835,7 @@ CREATE TABLE IF NOT EXISTS `tms_setting` (
   `value` text NOT NULL,
   `serialized` tinyint(1) NOT NULL,
   PRIMARY KEY (`setting_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=134 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=338 ;
 
 --
 -- Dumping data for table `tms_setting`
@@ -3106,24 +2857,8 @@ INSERT INTO `tms_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `s
 (13, 0, 'cod', 'cod_status', '1', 0),
 (14, 0, 'shipping', 'shipping_status', '1', 0),
 (15, 0, 'shipping', 'shipping_estimator', '1', 0),
-(16, 0, 'config', 'config_google_analytics', '', 0),
-(17, 0, 'config', 'config_error_filename', 'error.txt', 0),
-(18, 0, 'config', 'config_error_log', '1', 0),
-(19, 0, 'config', 'config_error_display', '1', 0),
-(20, 0, 'config', 'config_compression', '0', 0),
-(133, 0, 'config', 'config_encryption', 'ecdc93ae75c415e74f813c3d6387e0fa', 0),
-(22, 0, 'config', 'config_maintenance', '0', 0),
-(23, 0, 'config', 'config_account_mail', '0', 0),
-(24, 0, 'config', 'config_alert_emails', '', 0),
-(25, 0, 'config', 'config_secure', '0', 0),
-(26, 0, 'config', 'config_seo_url', '0', 0),
 (27, 0, 'coupon', 'coupon_sort_order', '4', 0),
 (28, 0, 'coupon', 'coupon_status', '1', 0),
-(29, 0, 'config', 'config_alert_mail', '0', 0),
-(30, 0, 'config', 'config_smtp_username', '', 0),
-(31, 0, 'config', 'config_smtp_password', '', 0),
-(32, 0, 'config', 'config_smtp_port', '25', 0),
-(33, 0, 'config', 'config_smtp_timeout', '5', 0),
 (34, 0, 'flat', 'flat_sort_order', '1', 0),
 (35, 0, 'flat', 'flat_status', '1', 0),
 (36, 0, 'flat', 'flat_geo_zone_id', '0', 0),
@@ -3134,94 +2869,119 @@ INSERT INTO `tms_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `s
 (41, 0, 'flat', 'flat_cost', '5.00', 0),
 (42, 0, 'credit', 'credit_sort_order', '7', 0),
 (43, 0, 'credit', 'credit_status', '1', 0),
-(44, 0, 'config', 'config_smtp_host', '', 0),
-(45, 0, 'config', 'config_image_cart_height', '47', 0),
-(46, 0, 'config', 'config_mail_protocol', 'mail', 0),
-(47, 0, 'config', 'config_mail_parameter', '', 0),
-(48, 0, 'config', 'config_image_wishlist_height', '47', 0),
-(49, 0, 'config', 'config_image_cart_width', '47', 0),
-(50, 0, 'config', 'config_image_wishlist_width', '47', 0),
-(51, 0, 'config', 'config_image_compare_height', '90', 0),
-(52, 0, 'config', 'config_image_compare_width', '90', 0),
 (53, 0, 'reward', 'reward_sort_order', '2', 0),
 (54, 0, 'reward', 'reward_status', '1', 0),
-(55, 0, 'config', 'config_image_related_height', '80', 0),
 (56, 0, 'affiliate', 'affiliate_module', 'a:1:{i:0;a:4:{s:9:"layout_id";s:2:"10";s:8:"position";s:12:"column_right";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
 (57, 0, 'category', 'category_module', 'a:2:{i:0;a:5:{s:9:"layout_id";s:1:"3";s:8:"position";s:11:"column_left";s:5:"count";s:1:"0";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}i:1;a:5:{s:9:"layout_id";s:1:"2";s:8:"position";s:11:"column_left";s:5:"count";s:1:"0";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
-(58, 0, 'config', 'config_image_related_width', '80', 0),
-(59, 0, 'config', 'config_image_additional_height', '74', 0),
 (60, 0, 'account', 'account_module', 'a:1:{i:0;a:4:{s:9:"layout_id";s:1:"6";s:8:"position";s:12:"column_right";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
-(61, 0, 'config', 'config_image_additional_width', '74', 0),
-(62, 0, 'config', 'config_image_manufacturer_height', '80', 0),
-(63, 0, 'config', 'config_image_manufacturer_width', '80', 0),
-(64, 0, 'config', 'config_image_category_height', '80', 0),
-(65, 0, 'config', 'config_image_category_width', '80', 0),
-(66, 0, 'config', 'config_image_product_height', '80', 0),
-(67, 0, 'config', 'config_image_product_width', '80', 0),
-(68, 0, 'config', 'config_image_popup_height', '500', 0),
-(69, 0, 'config', 'config_image_popup_width', '500', 0),
-(70, 0, 'config', 'config_image_thumb_height', '228', 0),
-(71, 0, 'config', 'config_image_thumb_width', '228', 0),
-(72, 0, 'config', 'config_icon', 'data/cart.png', 0),
-(73, 0, 'config', 'config_logo', 'data/logo.png', 0),
-(74, 0, 'config', 'config_cart_weight', '1', 0),
-(75, 0, 'config', 'config_upload_allowed', 'jpg, JPG, jpeg, gif, png, txt', 0),
-(76, 0, 'config', 'config_file_extension_allowed', 'txt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc\r\nrtf\r\nxls\r\nppt\r\nodt\r\nods', 0),
-(77, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/jpeg\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/vnd.microsoft.icon\r\nimage/tiff\r\nimage/tiff\r\nimage/svg+xml\r\nimage/svg+xml\r\napplication/zip\r\napplication/x-rar-compressed\r\napplication/x-msdownload\r\napplication/vnd.ms-cab-compressed\r\naudio/mpeg\r\nvideo/quicktime\r\nvideo/quicktime\r\napplication/pdf\r\nimage/vnd.adobe.photoshop\r\napplication/postscript\r\napplication/postscript\r\napplication/postscript\r\napplication/msword\r\napplication/rtf\r\napplication/vnd.ms-excel\r\napplication/vnd.ms-powerpoint\r\napplication/vnd.oasis.opendocument.text\r\napplication/vnd.oasis.opendocument.spreadsheet', 0),
-(78, 0, 'config', 'config_review_status', '1', 0),
-(79, 0, 'config', 'config_download', '1', 0),
-(80, 0, 'config', 'config_return_status_id', '2', 0),
-(81, 0, 'config', 'config_complete_status_id', '5', 0),
-(82, 0, 'config', 'config_order_status_id', '1', 0),
-(83, 0, 'config', 'config_stock_status_id', '5', 0),
-(84, 0, 'config', 'config_stock_checkout', '0', 0),
-(85, 0, 'config', 'config_stock_warning', '0', 0),
-(86, 0, 'config', 'config_stock_display', '0', 0),
-(87, 0, 'config', 'config_commission', '5', 0),
-(88, 0, 'config', 'config_affiliate_id', '4', 0),
-(89, 0, 'config', 'config_checkout_id', '5', 0),
-(90, 0, 'config', 'config_guest_checkout', '1', 0),
-(91, 0, 'config', 'config_account_id', '3', 0),
-(92, 0, 'config', 'config_customer_price', '0', 0),
-(93, 0, 'config', 'config_customer_group_id', '1', 0),
+(312, 0, 'config', 'config_seo_url', '0', 0),
+(313, 0, 'config', 'config_file_extension_allowed', 'txt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc\r\nrtf\r\nxls\r\nppt\r\nodt\r\nods', 0),
+(314, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/jpeg\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/vnd.microsoft.icon\r\nimage/tiff\r\nimage/tiff\r\nimage/svg+xml\r\nimage/svg+xml\r\napplication/zip\r\napplication/x-rar-compressed\r\napplication/x-msdownload\r\napplication/vnd.ms-cab-compressed\r\naudio/mpeg\r\nvideo/quicktime\r\nvideo/quicktime\r\napplication/pdf\r\nimage/vnd.adobe.photoshop\r\napplication/postscript\r\napplication/postscript\r\napplication/postscript\r\napplication/msword\r\napplication/rtf\r\napplication/vnd.ms-excel\r\napplication/vnd.ms-powerpoint\r\napplication/vnd.oasis.opendocument.text\r\napplication/vnd.oasis.opendocument.spreadsheet', 0),
+(315, 0, 'config', 'config_maintenance', '0', 0),
+(316, 0, 'config', 'config_password', '1', 0),
+(317, 0, 'config', 'config_compression', '0', 0),
+(318, 0, 'config', 'config_google_analytics', '', 0),
 (94, 0, 'voucher', 'voucher_sort_order', '8', 0),
 (95, 0, 'voucher', 'voucher_status', '1', 0),
-(96, 0, 'config', 'config_length_class_id', '1', 0),
-(97, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
-(98, 0, 'config', 'config_tax', '1', 0),
-(99, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(100, 0, 'config', 'config_tax_default', 'shipping', 0),
-(101, 0, 'config', 'config_admin_limit', '20', 0),
-(102, 0, 'config', 'config_catalog_limit', '15', 0),
+(319, 0, 'config', 'config_admin_language', 'en', 0),
+(320, 0, 'config', 'config_admin_limit', '10', 0),
+(321, 0, 'config', 'config_ftp_host', '127.0.0.1', 0),
+(322, 0, 'config', 'config_ftp_port', '21', 0),
+(323, 0, 'config', 'config_ftp_username', '', 0),
+(324, 0, 'config', 'config_ftp_password', '', 0),
 (103, 0, 'free_checkout', 'free_checkout_status', '1', 0),
 (104, 0, 'free_checkout', 'free_checkout_order_status_id', '1', 0),
-(105, 0, 'config', 'config_weight_class_id', '1', 0),
-(106, 0, 'config', 'config_currency_auto', '1', 0),
-(107, 0, 'config', 'config_currency', 'USD', 0),
+(325, 0, 'config', 'config_ftp_root', '', 0),
+(326, 0, 'config', 'config_ftp_status', '0', 0),
 (108, 0, 'slideshow', 'slideshow_module', 'a:1:{i:0;a:8:{s:9:"banner_id";s:1:"7";s:5:"width";s:3:"980";s:6:"height";s:3:"280";s:11:"resize_type";s:7:"default";s:9:"layout_id";s:1:"1";s:8:"position";s:11:"content_top";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
 (109, 0, 'banner', 'banner_module', 'a:1:{i:0;a:8:{s:9:"banner_id";s:1:"6";s:5:"width";s:3:"182";s:6:"height";s:3:"182";s:11:"resize_type";s:7:"default";s:9:"layout_id";s:1:"3";s:8:"position";s:11:"column_left";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"3";}}', 1),
-(110, 0, 'config', 'config_name', 'Your Store', 0),
-(111, 0, 'config', 'config_owner', 'Your Name', 0),
-(112, 0, 'config', 'config_address', 'Address 1', 0),
-(131, 0, 'config', 'config_email', 'admin@tmsconsole.com', 0),
-(114, 0, 'config', 'config_telephone', '123456789', 0),
-(115, 0, 'config', 'config_fax', '', 0),
-(116, 0, 'config', 'config_title', 'Your Store', 0),
-(117, 0, 'config', 'config_meta_description', 'My Store', 0),
-(118, 0, 'config', 'config_template', 'default', 0),
-(119, 0, 'config', 'config_layout_id', '4', 0),
-(120, 0, 'config', 'config_country_id', '222', 0),
-(121, 0, 'config', 'config_zone_id', '3563', 0),
-(122, 0, 'config', 'config_language', 'en', 0),
-(123, 0, 'config', 'config_admin_language', 'en', 0),
-(124, 0, 'config', 'config_order_edit', '100', 0),
-(125, 0, 'config', 'config_voucher_min', '1', 0),
-(126, 0, 'config', 'config_voucher_max', '1000', 0),
-(127, 0, 'config', 'config_customer_group_display', 'a:1:{i:0;s:1:"1";}', 1),
-(128, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(129, 0, 'config', 'config_password', '1', 0),
-(130, 0, 'config', 'config_product_count', '1', 0),
-(132, 0, 'config', 'config_url', 'http://127.0.0.1/tmsconsole/', 0);
+(327, 0, 'config', 'config_mail_protocol', 'mail', 0),
+(328, 0, 'config', 'config_mail_parameter', '', 0),
+(329, 0, 'config', 'config_smtp_host', '', 0),
+(330, 0, 'config', 'config_smtp_username', '', 0),
+(331, 0, 'config', 'config_smtp_password', '', 0),
+(332, 0, 'config', 'config_smtp_port', '25', 0),
+(333, 0, 'config', 'config_smtp_timeout', '5', 0),
+(334, 0, 'config', 'config_encryption', 'ecdc93ae75c415e74f813c3d6387e0fa', 0),
+(335, 0, 'config', 'config_error_display', '1', 0),
+(276, 0, 'config', 'config_stock_checkout', '0', 0),
+(277, 0, 'config', 'config_stock_status_id', '5', 0),
+(278, 0, 'config', 'config_affiliate_id', '4', 0),
+(279, 0, 'config', 'config_commission', '5', 0),
+(280, 0, 'config', 'config_return_id', '0', 0),
+(281, 0, 'config', 'config_return_status_id', '2', 0),
+(282, 0, 'config', 'config_logo', 'data/logo.png', 0),
+(283, 0, 'config', 'config_icon', 'data/cart.png', 0),
+(284, 0, 'config', 'config_image_category_width', '80', 0),
+(311, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(310, 0, 'config', 'config_shared', '0', 0),
+(309, 0, 'config', 'config_secure', '0', 0),
+(308, 0, 'config', 'config_fraud_status_id', '7', 0),
+(307, 0, 'config', 'config_fraud_score', '', 0),
+(306, 0, 'config', 'config_fraud_key', '', 0),
+(305, 0, 'config', 'config_fraud_detection', '0', 0),
+(304, 0, 'config', 'config_alert_emails', '', 0),
+(303, 0, 'config', 'config_account_mail', '0', 0),
+(302, 0, 'config', 'config_alert_mail', '0', 0),
+(301, 0, 'config', 'config_image_cart_height', '47', 0),
+(300, 0, 'config', 'config_image_cart_width', '47', 0),
+(299, 0, 'config', 'config_image_wishlist_height', '47', 0),
+(298, 0, 'config', 'config_image_wishlist_width', '47', 0),
+(297, 0, 'config', 'config_image_compare_height', '90', 0),
+(296, 0, 'config', 'config_image_compare_width', '90', 0),
+(295, 0, 'config', 'config_image_related_height', '80', 0),
+(294, 0, 'config', 'config_image_related_width', '80', 0),
+(293, 0, 'config', 'config_image_additional_height', '74', 0),
+(292, 0, 'config', 'config_image_additional_width', '74', 0),
+(291, 0, 'config', 'config_image_product_height', '80', 0),
+(290, 0, 'config', 'config_image_product_width', '80', 0),
+(289, 0, 'config', 'config_image_popup_height', '500', 0),
+(288, 0, 'config', 'config_image_popup_width', '500', 0),
+(287, 0, 'config', 'config_image_thumb_height', '228', 0),
+(286, 0, 'config', 'config_image_thumb_width', '228', 0),
+(285, 0, 'config', 'config_image_category_height', '80', 0),
+(267, 0, 'config', 'config_cart_weight', '1', 0),
+(268, 0, 'config', 'config_guest_checkout', '1', 0),
+(269, 0, 'config', 'config_checkout_id', '5', 0),
+(270, 0, 'config', 'config_order_edit', '100', 0),
+(271, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
+(272, 0, 'config', 'config_order_status_id', '1', 0),
+(273, 0, 'config', 'config_complete_status_id', '5', 0),
+(274, 0, 'config', 'config_stock_display', '0', 0),
+(275, 0, 'config', 'config_stock_warning', '0', 0),
+(266, 0, 'config', 'config_account_id', '3', 0),
+(264, 0, 'config', 'config_customer_group_display', 'a:1:{i:0;s:1:"1";}', 1),
+(265, 0, 'config', 'config_customer_price', '0', 0),
+(252, 0, 'config', 'config_catalog_limit', '15', 0),
+(253, 0, 'config', 'config_product_count', '1', 0),
+(254, 0, 'config', 'config_review_status', '1', 0),
+(255, 0, 'config', 'config_download', '1', 0),
+(256, 0, 'config', 'config_voucher_min', '1', 0),
+(257, 0, 'config', 'config_voucher_max', '1000', 0),
+(258, 0, 'config', 'config_tax', '1', 0),
+(259, 0, 'config', 'config_vat', '0', 0),
+(260, 0, 'config', 'config_tax_default', 'shipping', 0),
+(261, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(262, 0, 'config', 'config_customer_online', '0', 0),
+(263, 0, 'config', 'config_customer_group_id', '1', 0),
+(251, 0, 'config', 'config_weight_class_id', '1', 0),
+(250, 0, 'config', 'config_length_class_id', '1', 0),
+(249, 0, 'config', 'config_currency_auto', '1', 0),
+(248, 0, 'config', 'config_currency', 'USD', 0),
+(247, 0, 'config', 'config_language', 'en', 0),
+(246, 0, 'config', 'config_zone_id', '3563', 0),
+(245, 0, 'config', 'config_country_id', '222', 0),
+(244, 0, 'config', 'config_layout_id', '4', 0),
+(243, 0, 'config', 'config_meta_description', 'My Store', 0),
+(242, 0, 'config', 'config_title', 'Your Store', 0),
+(241, 0, 'config', 'config_fax', '', 0),
+(240, 0, 'config', 'config_telephone', '123456789', 0),
+(239, 0, 'config', 'config_email', 'admin@tmsconsole.com', 0),
+(238, 0, 'config', 'config_address', 'Address 1', 0),
+(237, 0, 'config', 'config_owner', 'Your Name', 0),
+(236, 0, 'config', 'config_name', 'Your Store', 0),
+(336, 0, 'config', 'config_error_log', '1', 0),
+(337, 0, 'config', 'config_error_filename', 'error.txt', 0);
 
 -- --------------------------------------------------------
 
@@ -3259,11 +3019,6 @@ CREATE TABLE IF NOT EXISTS `tms_store` (
   `ssl` varchar(255) NOT NULL,
   PRIMARY KEY (`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_store`
---
-
 
 -- --------------------------------------------------------
 
@@ -3361,6 +3116,34 @@ INSERT INTO `tms_tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tms_training`
+--
+
+CREATE TABLE IF NOT EXISTS `tms_training` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `training_title` varchar(500) DEFAULT NULL,
+  `training_description` text,
+  `training_type` varchar(50) DEFAULT NULL,
+  `training_location` varchar(100) DEFAULT NULL,
+  `training_time` varchar(50) DEFAULT NULL,
+  `training_duration` varchar(50) DEFAULT NULL,
+  `training_cost` varchar(20) DEFAULT NULL,
+  `training_instructor` varchar(50) DEFAULT NULL,
+  `createdon` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `tms_training`
+--
+
+INSERT INTO `tms_training` (`id`, `training_title`, `training_description`, `training_type`, `training_location`, `training_time`, `training_duration`, `training_cost`, `training_instructor`, `createdon`) VALUES
+(1, 'Demo Training One', 'This is a demo training created for testing purpose with junk data. Please report immediately if this kind of data are identified in production environment. Sincere thanks and regards from TPMS Console DEV ', 'Demo Typeset', 'World', '14th Sept 2014, 12:00PM', '2Hours', '8000', 'Anonymus', '2014-07-13 16:28:25'),
+(2, 'Demo Training 2', 'This is a demo training created for testing purpose with junk data. Please report immediately if this kind of data are identified in production environment. Sincere thanks and regards from TPMS Console DEV ', 'Demo Type Set2', 'Earth', '12th March, 2014 12:00PM', '8Hours', '9000', 'Anonymus', '2014-07-13 16:29:40');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tms_url_alias`
 --
 
@@ -3433,7 +3216,7 @@ CREATE TABLE IF NOT EXISTS `tms_user_group` (
 --
 
 INSERT INTO `tms_user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'Top Administrator', 'a:2:{s:6:"access";a:146:{i:0;s:17:"catalog/attribute";i:1;s:23:"catalog/attribute_group";i:2;s:16:"catalog/category";i:3;s:16:"catalog/download";i:4;s:14:"catalog/filter";i:5;s:19:"catalog/information";i:6;s:20:"catalog/manufacturer";i:7;s:14:"catalog/option";i:8;s:15:"catalog/product";i:9;s:15:"catalog/profile";i:10;s:14:"catalog/review";i:11;s:18:"common/filemanager";i:12;s:13:"design/banner";i:13;s:19:"design/custom_field";i:14;s:13:"design/layout";i:15;s:14:"extension/feed";i:16;s:17:"extension/manager";i:17;s:16:"extension/module";i:18;s:17:"extension/openbay";i:19;s:17:"extension/payment";i:20;s:18:"extension/shipping";i:21;s:15:"extension/total";i:22;s:16:"feed/google_base";i:23;s:19:"feed/google_sitemap";i:24;s:20:"localisation/country";i:25;s:21:"localisation/currency";i:26;s:21:"localisation/geo_zone";i:27;s:21:"localisation/language";i:28;s:25:"localisation/length_class";i:29;s:25:"localisation/order_status";i:30;s:26:"localisation/return_action";i:31;s:26:"localisation/return_reason";i:32;s:26:"localisation/return_status";i:33;s:25:"localisation/stock_status";i:34;s:22:"localisation/tax_class";i:35;s:21:"localisation/tax_rate";i:36;s:25:"localisation/weight_class";i:37;s:17:"localisation/zone";i:38;s:14:"module/account";i:39;s:16:"module/affiliate";i:40;s:29:"module/amazon_checkout_layout";i:41;s:13:"module/banner";i:42;s:17:"module/bestseller";i:43;s:15:"module/carousel";i:44;s:15:"module/category";i:45;s:18:"module/ebaydisplay";i:46;s:15:"module/featured";i:47;s:13:"module/filter";i:48;s:18:"module/google_talk";i:49;s:18:"module/information";i:50;s:13:"module/latest";i:51;s:17:"module/openbaypro";i:52;s:16:"module/pp_layout";i:53;s:16:"module/slideshow";i:54;s:14:"module/special";i:55;s:12:"module/store";i:56;s:14:"module/welcome";i:57;s:14:"openbay/amazon";i:58;s:22:"openbay/amazon_listing";i:59;s:22:"openbay/amazon_product";i:60;s:16:"openbay/amazonus";i:61;s:24:"openbay/amazonus_listing";i:62;s:24:"openbay/amazonus_product";i:63;s:20:"openbay/ebay_profile";i:64;s:21:"openbay/ebay_template";i:65;s:15:"openbay/openbay";i:66;s:23:"payment/amazon_checkout";i:67;s:24:"payment/authorizenet_aim";i:68;s:21:"payment/bank_transfer";i:69;s:14:"payment/cheque";i:70;s:11:"payment/cod";i:71;s:21:"payment/free_checkout";i:72;s:22:"payment/klarna_account";i:73;s:22:"payment/klarna_invoice";i:74;s:14:"payment/liqpay";i:75;s:20:"payment/moneybookers";i:76;s:14:"payment/nochex";i:77;s:15:"payment/paymate";i:78;s:16:"payment/paypoint";i:79;s:13:"payment/payza";i:80;s:26:"payment/perpetual_payments";i:81;s:18:"payment/pp_express";i:82;s:25:"payment/pp_payflow_iframe";i:83;s:14:"payment/pp_pro";i:84;s:21:"payment/pp_pro_iframe";i:85;s:17:"payment/pp_pro_pf";i:86;s:17:"payment/pp_pro_uk";i:87;s:19:"payment/pp_standard";i:88;s:15:"payment/sagepay";i:89;s:22:"payment/sagepay_direct";i:90;s:18:"payment/sagepay_us";i:91;s:19:"payment/twocheckout";i:92;s:28:"payment/web_payment_software";i:93;s:16:"payment/worldpay";i:94;s:27:"report/affiliate_commission";i:95;s:22:"report/customer_credit";i:96;s:22:"report/customer_online";i:97;s:21:"report/customer_order";i:98;s:22:"report/customer_reward";i:99;s:24:"report/product_purchased";i:100;s:21:"report/product_viewed";i:101;s:18:"report/sale_coupon";i:102;s:17:"report/sale_order";i:103;s:18:"report/sale_return";i:104;s:20:"report/sale_shipping";i:105;s:15:"report/sale_tax";i:106;s:14:"sale/affiliate";i:107;s:12:"sale/contact";i:108;s:11:"sale/coupon";i:109;s:13:"sale/customer";i:110;s:20:"sale/customer_ban_ip";i:111;s:19:"sale/customer_group";i:112;s:10:"sale/order";i:113;s:14:"sale/recurring";i:114;s:11:"sale/return";i:115;s:12:"sale/voucher";i:116;s:18:"sale/voucher_theme";i:117;s:15:"setting/setting";i:118;s:13:"setting/store";i:119;s:16:"shipping/auspost";i:120;s:17:"shipping/citylink";i:121;s:14:"shipping/fedex";i:122;s:13:"shipping/flat";i:123;s:13:"shipping/free";i:124;s:13:"shipping/item";i:125;s:23:"shipping/parcelforce_48";i:126;s:15:"shipping/pickup";i:127;s:19:"shipping/royal_mail";i:128;s:12:"shipping/ups";i:129;s:13:"shipping/usps";i:130;s:15:"shipping/weight";i:131;s:11:"tool/backup";i:132;s:14:"tool/error_log";i:133;s:12:"total/coupon";i:134;s:12:"total/credit";i:135;s:14:"total/handling";i:136;s:16:"total/klarna_fee";i:137;s:19:"total/low_order_fee";i:138;s:12:"total/reward";i:139;s:14:"total/shipping";i:140;s:15:"total/sub_total";i:141;s:9:"total/tax";i:142;s:11:"total/total";i:143;s:13:"total/voucher";i:144;s:9:"user/user";i:145;s:20:"user/user_permission";}s:6:"modify";a:146:{i:0;s:17:"catalog/attribute";i:1;s:23:"catalog/attribute_group";i:2;s:16:"catalog/category";i:3;s:16:"catalog/download";i:4;s:14:"catalog/filter";i:5;s:19:"catalog/information";i:6;s:20:"catalog/manufacturer";i:7;s:14:"catalog/option";i:8;s:15:"catalog/product";i:9;s:15:"catalog/profile";i:10;s:14:"catalog/review";i:11;s:18:"common/filemanager";i:12;s:13:"design/banner";i:13;s:19:"design/custom_field";i:14;s:13:"design/layout";i:15;s:14:"extension/feed";i:16;s:17:"extension/manager";i:17;s:16:"extension/module";i:18;s:17:"extension/openbay";i:19;s:17:"extension/payment";i:20;s:18:"extension/shipping";i:21;s:15:"extension/total";i:22;s:16:"feed/google_base";i:23;s:19:"feed/google_sitemap";i:24;s:20:"localisation/country";i:25;s:21:"localisation/currency";i:26;s:21:"localisation/geo_zone";i:27;s:21:"localisation/language";i:28;s:25:"localisation/length_class";i:29;s:25:"localisation/order_status";i:30;s:26:"localisation/return_action";i:31;s:26:"localisation/return_reason";i:32;s:26:"localisation/return_status";i:33;s:25:"localisation/stock_status";i:34;s:22:"localisation/tax_class";i:35;s:21:"localisation/tax_rate";i:36;s:25:"localisation/weight_class";i:37;s:17:"localisation/zone";i:38;s:14:"module/account";i:39;s:16:"module/affiliate";i:40;s:29:"module/amazon_checkout_layout";i:41;s:13:"module/banner";i:42;s:17:"module/bestseller";i:43;s:15:"module/carousel";i:44;s:15:"module/category";i:45;s:18:"module/ebaydisplay";i:46;s:15:"module/featured";i:47;s:13:"module/filter";i:48;s:18:"module/google_talk";i:49;s:18:"module/information";i:50;s:13:"module/latest";i:51;s:17:"module/openbaypro";i:52;s:16:"module/pp_layout";i:53;s:16:"module/slideshow";i:54;s:14:"module/special";i:55;s:12:"module/store";i:56;s:14:"module/welcome";i:57;s:14:"openbay/amazon";i:58;s:22:"openbay/amazon_listing";i:59;s:22:"openbay/amazon_product";i:60;s:16:"openbay/amazonus";i:61;s:24:"openbay/amazonus_listing";i:62;s:24:"openbay/amazonus_product";i:63;s:20:"openbay/ebay_profile";i:64;s:21:"openbay/ebay_template";i:65;s:15:"openbay/openbay";i:66;s:23:"payment/amazon_checkout";i:67;s:24:"payment/authorizenet_aim";i:68;s:21:"payment/bank_transfer";i:69;s:14:"payment/cheque";i:70;s:11:"payment/cod";i:71;s:21:"payment/free_checkout";i:72;s:22:"payment/klarna_account";i:73;s:22:"payment/klarna_invoice";i:74;s:14:"payment/liqpay";i:75;s:20:"payment/moneybookers";i:76;s:14:"payment/nochex";i:77;s:15:"payment/paymate";i:78;s:16:"payment/paypoint";i:79;s:13:"payment/payza";i:80;s:26:"payment/perpetual_payments";i:81;s:18:"payment/pp_express";i:82;s:25:"payment/pp_payflow_iframe";i:83;s:14:"payment/pp_pro";i:84;s:21:"payment/pp_pro_iframe";i:85;s:17:"payment/pp_pro_pf";i:86;s:17:"payment/pp_pro_uk";i:87;s:19:"payment/pp_standard";i:88;s:15:"payment/sagepay";i:89;s:22:"payment/sagepay_direct";i:90;s:18:"payment/sagepay_us";i:91;s:19:"payment/twocheckout";i:92;s:28:"payment/web_payment_software";i:93;s:16:"payment/worldpay";i:94;s:27:"report/affiliate_commission";i:95;s:22:"report/customer_credit";i:96;s:22:"report/customer_online";i:97;s:21:"report/customer_order";i:98;s:22:"report/customer_reward";i:99;s:24:"report/product_purchased";i:100;s:21:"report/product_viewed";i:101;s:18:"report/sale_coupon";i:102;s:17:"report/sale_order";i:103;s:18:"report/sale_return";i:104;s:20:"report/sale_shipping";i:105;s:15:"report/sale_tax";i:106;s:14:"sale/affiliate";i:107;s:12:"sale/contact";i:108;s:11:"sale/coupon";i:109;s:13:"sale/customer";i:110;s:20:"sale/customer_ban_ip";i:111;s:19:"sale/customer_group";i:112;s:10:"sale/order";i:113;s:14:"sale/recurring";i:114;s:11:"sale/return";i:115;s:12:"sale/voucher";i:116;s:18:"sale/voucher_theme";i:117;s:15:"setting/setting";i:118;s:13:"setting/store";i:119;s:16:"shipping/auspost";i:120;s:17:"shipping/citylink";i:121;s:14:"shipping/fedex";i:122;s:13:"shipping/flat";i:123;s:13:"shipping/free";i:124;s:13:"shipping/item";i:125;s:23:"shipping/parcelforce_48";i:126;s:15:"shipping/pickup";i:127;s:19:"shipping/royal_mail";i:128;s:12:"shipping/ups";i:129;s:13:"shipping/usps";i:130;s:15:"shipping/weight";i:131;s:11:"tool/backup";i:132;s:14:"tool/error_log";i:133;s:12:"total/coupon";i:134;s:12:"total/credit";i:135;s:14:"total/handling";i:136;s:16:"total/klarna_fee";i:137;s:19:"total/low_order_fee";i:138;s:12:"total/reward";i:139;s:14:"total/shipping";i:140;s:15:"total/sub_total";i:141;s:9:"total/tax";i:142;s:11:"total/total";i:143;s:13:"total/voucher";i:144;s:9:"user/user";i:145;s:20:"user/user_permission";}}'),
+(1, 'Top Administrator', 'a:2:{s:6:"access";a:9:{i:0;s:18:"common/filemanager";i:1;s:17:"employee/employee";i:2;s:15:"setting/setting";i:3;s:13:"setting/store";i:4;s:11:"tool/backup";i:5;s:14:"tool/error_log";i:6;s:17:"training/training";i:7;s:9:"user/user";i:8;s:20:"user/user_permission";}s:6:"modify";a:9:{i:0;s:18:"common/filemanager";i:1;s:17:"employee/employee";i:2;s:15:"setting/setting";i:3;s:13:"setting/store";i:4;s:11:"tool/backup";i:5;s:14:"tool/error_log";i:6;s:17:"training/training";i:7;s:9:"user/user";i:8;s:20:"user/user_permission";}}'),
 (10, 'Demonstration', '');
 
 -- --------------------------------------------------------
@@ -3458,11 +3241,6 @@ CREATE TABLE IF NOT EXISTS `tms_voucher` (
   PRIMARY KEY (`voucher_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tms_voucher`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -3477,11 +3255,6 @@ CREATE TABLE IF NOT EXISTS `tms_voucher_history` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`voucher_history_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tms_voucher_history`
---
-
 
 -- --------------------------------------------------------
 
@@ -7603,3 +7376,7 @@ CREATE TABLE IF NOT EXISTS `tms_zone_to_geo_zone` (
 INSERT INTO `tms_zone_to_geo_zone` (`zone_to_geo_zone_id`, `country_id`, `zone_id`, `geo_zone_id`, `date_added`, `date_modified`) VALUES
 (57, 222, 0, 3, '2010-02-26 22:33:24', '0000-00-00 00:00:00'),
 (65, 222, 0, 4, '2010-12-15 15:18:13', '0000-00-00 00:00:00');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
