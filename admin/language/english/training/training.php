@@ -6,12 +6,15 @@ $_['heading_title']     = 'Trainings';
 $_['text_success']      = 'Success: You have modified employees!';
 
 // Column
-$_['column_name']  	  = 'Name of the Training';
-$_['column_type']     = 'Type of Training';
-$_['column_date'] 	  = 'Date of Training';
-$_['column_duration'] = 'Training Duration';
-$_['column_location'] = 'Training Location';
-$_['column_action']   = 'Action';
+$_['text_column_training_title']  	  		= 'Name';
+$_['text_column_training_type']  	  		= 'Type';
+$_['text_column_training_time']  	  		= 'Date/Time';
+$_['text_column_training_duration']  	  	= 'Duration';
+$_['text_column_training_location']  	  	= 'Location';
+$_['text_column_training_cost']  	  		= 'Cost';
+$_['text_column_training_instructor']  	  	= 'Instructor';
+$_['text_column_createdon']  	  			= 'Created On';
+$_['text_column_action']  	  				= 'Action';
 
 //Button
 $_['button_insert']     = 'Insert';

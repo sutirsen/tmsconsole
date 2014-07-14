@@ -76,6 +76,11 @@ $_['text_total']                       = 'Order Totals';
 $_['text_user']                        = 'Users';
 $_['text_documentation']               = 'Documentation';
 $_['text_users']                       = 'Users';
+
+$_['text_trainings']                    = 'Trainings';
+$_['text_training']                   = 'List Trainings';
+
+
 $_['text_user_group']                  = 'User Groups';
 $_['text_voucher']                     = 'Gift Vouchers';
 $_['text_voucher_theme']               = 'Voucher Themes';

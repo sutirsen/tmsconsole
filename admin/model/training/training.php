@@ -25,17 +25,20 @@ public function addTraining($data) {
 		$sql = "SELECT * FROM `" . DB_PREFIX . "training`";
 
 		$sort_data = array(
-			'trng_name',
-			'trng_type',
-			'trng_date',
-			'trng_location'
-			
+			'training_title',
+			'training_type',
+			'training_time',
+			'training_location',
+			'training_duration',
+			'training_cost',
+			'training_instructor',
+			'createdon'
 		);	
 
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY trng_name";
+			$sql .= " ORDER BY createdon";
 		}
 
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {

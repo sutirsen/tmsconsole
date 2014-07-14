@@ -116,14 +116,14 @@ class ControllerTrainingTraining extends Controller {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
-			$sort = 'trng_name';
+			$sort = 'createdon';
 		}
 	
 		//Default ordering crieteria
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
 		} else {
-			$order = 'ASC';
+			$order = 'DESC';
 		}
 	
 		//Page no maintained for pagination
@@ -178,24 +178,28 @@ class ControllerTrainingTraining extends Controller {
 		$user_total = $this->model_training_training->getTotalTrainings();
 	
 		$results = $this->model_training_training->getTrainings($data);
-	
+		
 		foreach ($results as $result) {
 			$action = array();
 	
 			$action[] = array(
 					'text' => $this->language->get('text_edit'),
-					'href' => $this->url->link('training/training/update', 'token=' . $this->session->data['token'] . '&trng_code=' . $result['trng_code'] . $url, 'SSL')
+					'href' => $this->url->link('training/training/update', 'token=' . $this->session->data['token'] . '&id=' . $result['id'] . $url, 'SSL')
 			);
 	
 			$this->data['trainings'][] = array(
-					'code'    		=> $result['trng_code'],
-					'name'    		=> $result['trng_name'],
-					'type'   		=> $result['trng_type'],
-					'date'    		=> $result['trng_date'],
-					'duration'    	=> $result['trng_duration'],
-					'location'     	=> $result['trng_location'],
-					'selected'   	=> isset($this->request->post['selected']) && in_array($result['trng_code'], $this->request->post['selected']),
-					'action'     	=> $action
+					'id'    					=> $result['id'],
+					'training_title'    		=> $result['training_title'],
+					'training_description'    	=> $result['training_description'],
+					'training_type'   			=> $result['training_type'],
+					'training_time'    			=> $result['training_time'],
+					'training_duration'    		=> $result['training_duration'],
+					'training_location'     	=> $result['training_location'],
+					'training_cost'     		=> $result['training_cost'],
+					'training_instructor'     	=> $result['training_instructor'],
+					'createdon'     			=> $result['createdon'],
+					'selected'   				=> isset($this->request->post['selected']) && in_array($result['id'], $this->request->post['selected']),
+					'action'     				=> $action
 			);
 		}
 	
@@ -203,12 +207,15 @@ class ControllerTrainingTraining extends Controller {
 	
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
 	
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_type'] = $this->language->get('column_type');
-		$this->data['column_date'] = $this->language->get('column_date');
-		$this->data['column_duration'] = $this->language->get('column_duration');
-		$this->data['column_location'] = $this->language->get('column_location');
-		$this->data['column_action'] = $this->language->get('column_action');
+		$this->data['text_column_training_title'] 		= $this->language->get('text_column_training_title');
+		$this->data['text_column_training_type'] 		= $this->language->get('text_column_training_type');
+		$this->data['text_column_training_time'] 		= $this->language->get('text_column_training_time');
+		$this->data['text_column_training_duration'] 	= $this->language->get('text_column_training_duration');
+		$this->data['text_column_training_location'] 	= $this->language->get('text_column_training_location');
+		$this->data['text_column_training_cost'] 		= $this->language->get('text_column_training_cost');
+		$this->data['text_column_training_instructor'] 	= $this->language->get('text_column_training_instructor');
+		$this->data['text_column_createdon'] 			= $this->language->get('text_column_createdon');
+		$this->data['text_column_action'] 				= $this->language->get('text_column_action');
 		
 		$this->data['button_insert'] = $this->language->get('button_insert');
 		$this->data['button_delete'] = $this->language->get('button_delete');
@@ -239,10 +246,14 @@ class ControllerTrainingTraining extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 	
-		$this->data['sort_name'] = $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=trng_name' . $url, 'SSL');
-		$this->data['sort_type'] = $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=trng_type' . $url, 'SSL');
-		$this->data['sort_date'] = $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=trng_date' . $url, 'SSL');
-		$this->data['sort_location'] = $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=trng_location' . $url, 'SSL');
+		$this->data['sort_training_title'] 		= $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=training_title' . $url, 'SSL');
+		$this->data['sort_training_type'] 		= $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=training_type' . $url, 'SSL');
+		$this->data['sort_training_time'] 		= $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=training_time' . $url, 'SSL');
+		$this->data['sort_training_location'] 	= $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=training_location' . $url, 'SSL');
+		$this->data['sort_training_duration'] 	= $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=training_duration' . $url, 'SSL');
+		$this->data['sort_training_cost'] 		= $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=training_cost' . $url, 'SSL');
+		$this->data['sort_training_instructor'] = $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=training_instructor' . $url, 'SSL');
+		$this->data['sort_createdon'] 			= $this->url->link('training/training', 'token=' . $this->session->data['token'] . '&sort=createdon' . $url, 'SSL');
 			
 		$url = '';
 	

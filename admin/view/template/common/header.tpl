@@ -158,7 +158,7 @@ $(document).ready(function(){
 				</li>
 				<li class="has-sub ">
 					<a href="javascript:;">
-					<i class="icon-bookmark-empty"></i> 
+					<i class="icon-user"></i> 
 					<span class="title"><?php echo $text_users; ?></span>
 					<span class="arrow "></span>
 					</a>
@@ -167,6 +167,17 @@ $(document).ready(function(){
 						<li ><a href="<?php echo $user_group; ?>"><?php echo $text_user_group; ?></a></li>
 					</ul>
 				</li>
+				<li class="has-sub ">
+					<a href="javascript:;">
+					<i class="icon-map-marker"></i> 
+					<span class="title"><?php echo $text_trainings; ?></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub">
+						<li ><a href="<?php echo $training; ?>"><?php echo $text_training; ?></a></li>
+					</ul>
+				</li>
+				
 				<li class="has-sub ">
 					<a href="javascript:;">
 					<i class="icon-cogs"></i> 

@@ -66,31 +66,57 @@
 						 <table class="table table-hover table-bordered table-striped">
 				          <thead>
 				            <tr>
-				              <th width="1" style="text-align: center;"><input id="selectall" type="checkbox" /></th>
-				              <th <?php if ($sort == 'trng_name') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'trng_name') { ?>
-				                <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
-				                <?php } else { ?>
-				                <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
-				                <?php } ?></th>
-								<th <?php if ($sort == 'trng_type') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'trng_type') { ?>
-				                <a href="<?php echo $sort_type; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_type; ?></a>
-				                <?php } else { ?>
-				                <a href="<?php echo $sort_type; ?>"><?php echo $column_type; ?></a>
-				                <?php } ?></th>
-				          	  <th <?php if ($sort == 'trng_date') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'trng_date') { ?>
-				                <a href="<?php echo $sort_date; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_date; ?></a>
-				                <?php } else { ?>
-				                <a href="<?php echo $sort_date; ?>"><?php echo $column_date; ?></a>
-				                <?php } ?></th>
-				             
-				              <th><?php echo $column_duration; ?></th>
-				              
-				              <th <?php if ($sort == 'trng_location') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'trng_location') { ?>
-				                <a href="<?php echo $sort_location; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_location; ?></a>
-				                <?php } else { ?>
-				                <a href="<?php echo $sort_location; ?>"><?php echo $column_location; ?></a>
-				                <?php } ?></th>
-				              <th><?php echo $column_action; ?></th>
+				              	<th width="1" style="text-align: center;"><input id="selectall" type="checkbox" /></th>
+				              	<th <?php if ($sort == 'training_title') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'training_title') { ?>
+				                	<a href="<?php echo $sort_training_title; ?>" class="<?php echo strtolower($order); ?>"><?php echo $text_column_training_title; ?></a>
+				                	<?php } else { ?>
+				                	<a href="<?php echo $sort_training_title; ?>"><?php echo $text_column_training_title; ?></a>
+				                	<?php } ?>
+				            	</th>
+				            	<th <?php if ($sort == 'training_type') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'training_type') { ?>
+				                	<a href="<?php echo $sort_training_type; ?>" class="<?php echo strtolower($order); ?>"><?php echo $text_column_training_type; ?></a>
+				                	<?php } else { ?>
+				                	<a href="<?php echo $sort_training_type; ?>"><?php echo $text_column_training_type; ?></a>
+				                	<?php } ?>
+				            	</th>
+				            	<th <?php if ($sort == 'training_time') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'training_time') { ?>
+				                	<a href="<?php echo $sort_training_time; ?>" class="<?php echo strtolower($order); ?>"><?php echo $text_column_training_time; ?></a>
+				                	<?php } else { ?>
+				                	<a href="<?php echo $sort_training_time; ?>"><?php echo $text_column_training_time; ?></a>
+				                	<?php } ?>
+				            	</th>
+				            	<th <?php if ($sort == 'training_duration') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'training_duration') { ?>
+				                	<a href="<?php echo $sort_training_duration; ?>" class="<?php echo strtolower($order); ?>"><?php echo $text_column_training_duration; ?></a>
+				                	<?php } else { ?>
+				                	<a href="<?php echo $sort_training_duration; ?>"><?php echo $text_column_training_duration; ?></a>
+				                	<?php } ?>
+				            	</th>
+				            	<th <?php if ($sort == 'training_location') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'training_location') { ?>
+				                	<a href="<?php echo $sort_training_location; ?>" class="<?php echo strtolower($order); ?>"><?php echo $text_column_training_location; ?></a>
+				                	<?php } else { ?>
+				                	<a href="<?php echo $sort_training_location; ?>"><?php echo $text_column_training_location; ?></a>
+				                	<?php } ?>
+				            	</th>
+				            	<th <?php if ($sort == 'training_cost') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'training_cost') { ?>
+				                	<a href="<?php echo $sort_training_cost; ?>" class="<?php echo strtolower($order); ?>"><?php echo $text_column_training_cost; ?></a>
+				                	<?php } else { ?>
+				                	<a href="<?php echo $sort_training_cost; ?>"><?php echo $text_column_training_cost; ?></a>
+				                	<?php } ?>
+				            	</th>
+				            	<th <?php if ($sort == 'training_instructor') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'training_instructor') { ?>
+				                	<a href="<?php echo $sort_training_instructor; ?>" class="<?php echo strtolower($order); ?>"><?php echo $text_column_training_instructor; ?></a>
+				                	<?php } else { ?>
+				                	<a href="<?php echo $sort_training_instructor; ?>"><?php echo $text_column_training_instructor; ?></a>
+				                	<?php } ?>
+				            	</th>
+				            	<th <?php if ($sort == 'createdon') { ?> class="sorting_<?php echo strtolower($order); ?>"<?php } ?>><?php if ($sort == 'createdon') { ?>
+				                	<a href="<?php echo $sort_createdon; ?>" class="<?php echo strtolower($order); ?>"><?php echo $text_column_createdon; ?></a>
+				                	<?php } else { ?>
+				                	<a href="<?php echo $sort_createdon; ?>"><?php echo $text_column_createdon; ?></a>
+				                	<?php } ?>
+				            	</th>
+				            	
+								<th><?php echo $text_column_action; ?></th>
 				            </tr>
 				          </thead>
 				          <tbody>
@@ -98,15 +124,18 @@
 				            <?php foreach ($trainings as $training) { ?>
 				            <tr>
 				              <td style="text-align: center;"><?php if ($training['selected']) { ?>
-				                <input type="checkbox" name="selected[]" value="<?php echo $training['code']; ?>" class="selectedId" checked="checked" />
+				                <input type="checkbox" name="selected[]" value="<?php echo $training['id']; ?>" class="selectedId" checked="checked" />
 				                <?php } else { ?>
-				                <input type="checkbox" name="selected[]" value="<?php echo $training['code']; ?>" class="selectedId" />
+				                <input type="checkbox" name="selected[]" value="<?php echo $training['id']; ?>" class="selectedId" />
 				                <?php } ?></td>
-				              <td class="left"><?php echo $training['name']; ?></td>
-				              <td class="left"><?php echo $training['type']; ?></td>
-				              <td class="left"><?php echo $training['date']; ?></td>
-				              <td class="left"><?php echo $training['duration']; ?></td>
-				              <td class="left"><?php echo $training['location']; ?></td>
+				              <td class="left"><?php echo $training['training_title']; ?></td>
+				              <td class="left"><?php echo $training['training_type']; ?></td>
+				              <td class="left"><?php echo $training['training_time']; ?></td>
+				              <td class="left"><?php echo $training['training_duration']; ?></td>
+				              <td class="left"><?php echo $training['training_location']; ?></td>
+				              <td class="left"><?php echo $training['training_cost']; ?></td>
+				              <td class="left"><?php echo $training['training_instructor']; ?></td>
+				              <td class="left"><?php echo $training['createdon']; ?></td>
 				              <td class="right"><?php foreach ($training['action'] as $action) { ?>
 				                [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
 				                <?php } ?></td>
@@ -114,7 +143,7 @@
 				            <?php } ?>
 				            <?php } else { ?>
 				            <tr>
-				              <td class="center" colspan="9"><?php echo $text_no_results; ?></td>
+				              <td class="center" colspan="10"><?php echo $text_no_results; ?></td>
 				            </tr>
 				            <?php } ?>
 				          </tbody>

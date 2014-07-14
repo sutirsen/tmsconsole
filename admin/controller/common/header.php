@@ -115,6 +115,10 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_openbay_report_price'] = $this->language->get('text_openbay_report_price');
 		$this->data['text_openbay_order_import'] = $this->language->get('text_openbay_order_import');
 
+		// Training navigations listed here
+		$this->data['text_trainings'] = $this->language->get('text_trainings');
+		$this->data['text_training'] = $this->language->get('text_training');
+
 		$this->data['text_paypal_express'] = $this->language->get('text_paypal_manage');
 		$this->data['text_paypal_express_search'] = $this->language->get('text_paypal_search');
 		$this->data['text_recurring_profile'] = $this->language->get('text_recurring_profile');
@@ -194,8 +198,10 @@ class ControllerCommonHeader extends Controller {
 			$this->data['length_class'] = $this->url->link('localisation/length_class', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['zone'] = $this->url->link('localisation/zone', 'token=' . $this->session->data['token'], 'SSL');
 
-			$this->data['openbay_show_menu'] = $this->config->get('openbaymanager_show_menu');
+			$this->data['training'] = $this->url->link('training/training', 'token=' . $this->session->data['token'], 'SSL');
 
+			$this->data['openbay_show_menu'] = $this->config->get('openbaymanager_show_menu');
+		
 			$this->data['openbay_link_extension'] = $this->url->link('extension/openbay', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['openbay_link_orders'] = $this->url->link('extension/openbay/orderList', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['openbay_link_items'] = $this->url->link('extension/openbay/itemList', 'token=' . $this->session->data['token'], 'SSL');
