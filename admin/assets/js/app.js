@@ -1896,6 +1896,15 @@ var App = function () {
     	    $.uniform.update();
     	});
     }
+
+    var handleTableScroll = function() {
+
+        if($('#tblTrainingList'))
+        {
+            $('#tblTrainingList').scrollTableBody();
+        }
+    }
+
     var handleFixInputPlaceholderForIE = function () {
         //fix html5 placeholder attribute for ie7 & ie8
         if (jQuery.browser.msie && jQuery.browser.version.substr(0, 1) <= 9) { // ie7&ie8
@@ -3515,7 +3524,8 @@ var App = function () {
             handleAccordions(); //handles accordions
             handleFormWizards(); // handles form wizards
             handleCheckAllTickboxes(); //handle tickboxes
-            
+            handleTableScroll(); //handle table scroll for all tables
+
             //Initializing global form handlers
             handleForgottenPassword();
             handleUserRegistration();

@@ -55,11 +55,11 @@
                      </div>
                      <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form" class="form-horizontal userRegFrmHandle">
+                        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form" class="form-horizontal">
                            <div class="control-group">
-                              <label class="control-label"><?php echo $entry_name; ?>*</label>
+                              <label class="control-label"><?php echo $entry_training_title; ?>*</label>
                               <div class="controls">
-                                 <input type="text" class="span6 m-wrap" name="name" value="<?php echo $name; ?>" id="name" />
+                                 <input type="text" class="span6 m-wrap" name="training_title" value="<?php echo $training_title; ?>" id="training_title" />
                                  <?php if ($error_name) { ?>
                                  <span class="help-inline" style="color:red;"><?php echo $error_name; ?></span>
               					 <?php } ?>

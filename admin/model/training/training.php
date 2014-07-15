@@ -35,6 +35,41 @@ public function addTraining($data) {
 			'createdon'
 		);	
 
+		$sql .= "WHERE '1'='1'";
+
+		if (!empty($data['filter_training_title'])) {
+			$sql .= " AND training_title LIKE '" . $this->db->escape($data['filter_training_title']) . "%'";
+		}
+
+		if (!empty($data['filter_training_type'])) {
+			$sql .= " AND training_type LIKE '" . $this->db->escape($data['filter_training_type']) . "%'";
+		}
+
+		if (!empty($data['filter_training_time'])) {
+			$sql .= " AND training_time LIKE '" . $this->db->escape($data['filter_training_time']) . "%'";
+		}
+
+		if (!empty($data['filter_training_location'])) {
+			$sql .= " AND training_location LIKE '" . $this->db->escape($data['filter_training_location']) . "%'";
+		}
+
+		if (!empty($data['filter_training_duration'])) {
+			$sql .= " AND training_duration LIKE '" . $this->db->escape($data['filter_training_duration']) . "%'";
+		}
+
+		if (!empty($data['filter_training_cost'])) {
+			$sql .= " AND training_cost LIKE '" . $this->db->escape($data['filter_training_cost']) . "%'";
+		}
+
+		if (!empty($data['filter_training_instructor'])) {
+			$sql .= " AND training_instructor LIKE '" . $this->db->escape($data['filter_training_instructor']) . "%'";
+		}
+
+		if (!empty($data['filter_createdon'])) {
+			$sql .= " AND createdon LIKE '" . $this->db->escape($data['filter_createdon']) . "%'";
+		}
+
+		
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];
 		} else {

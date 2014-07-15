@@ -19,15 +19,19 @@ $_['text_column_action']  	  				= 'Action';
 //Button
 $_['button_insert']     = 'Insert';
 $_['button_delete']     = 'Delete';
+$_['button_filter']     = 'Search';
 
 // Entry
 
-$_['entry_code']    	= 'Training Code:';
-$_['entry_name'] 	   	= 'Name of the Training:';
-$_['entry_type'] 	   	= 'Type of Training:';
-$_['entry_date']   	   	= 'Date of Training:';
-$_['entry_duration']   	= 'Training Duration:';
-$_['entry_location'] = 'Training Location:';
+$_['entry_training_title']    		= 'Title:';
+$_['entry_training_description']	= 'Description:';
+$_['entry_training_type'] 	   		= 'Type:';
+$_['entry_training_time'] 	   		= 'Time:';
+$_['entry_training_duration']   	= 'Duration:';
+$_['entry_training_location']   	= 'Location:';
+$_['entry_training_cost'] 			= 'Cost:';
+$_['entry_training_instructor'] 	= 'Instructor:';
+
 
 
 // Error

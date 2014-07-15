@@ -57,6 +57,8 @@
    <script type="text/javascript" src="assets/bootstrap-daterangepicker/daterangepicker.js"></script> 
    <script type="text/javascript" src="assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>  
    <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+   <script type="text/javascript" src="assets/js/underscore-1.5.2.min.js"></script>
+   <script type="text/javascript" src="assets/js/jquery.scrollTableBody-1.0.0.js"></script>
 	<script src="assets/js/app.js"></script>		
 	<script>
 		jQuery(document).ready(function() {			
