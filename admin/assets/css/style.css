@@ -1082,6 +1082,11 @@ Portlets
   width: 13px;
 }
 
+.portlet-title .tools > a.reloadWithoutHandler {
+  background-image:url(../img/portlet-reload-icon.png);
+  width: 13px;
+}
+
 .portlet-title .tools > a.expand {
   background-image:url(../img/portlet-expand-icon.png);
   width: 14px;
@@ -1293,6 +1298,7 @@ Box portlet
 }
 
 .portlet.box .portlet-title .tools > a.reload,
+.portlet.box .portlet-title .tools > a.reloadWithoutHandler,
 .portlet.solid .portlet-title .tools > a.reload {
   background-image:url(../img/portlet-reload-icon-white.png);
 }

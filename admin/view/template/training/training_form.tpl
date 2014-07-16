@@ -60,54 +60,71 @@
                               <label class="control-label"><?php echo $entry_training_title; ?>*</label>
                               <div class="controls">
                                  <input type="text" class="span6 m-wrap" name="training_title" value="<?php echo $training_title; ?>" id="training_title" />
-                                 <?php if ($error_name) { ?>
-                                 <span class="help-inline" style="color:red;"><?php echo $error_name; ?></span>
-              					 <?php } ?>
+                                 <?php if ($error_training_title) { ?>
+                                 <span class="help-inline" style="color:red;"><?php echo $error_training_title; ?></span>
+              					         <?php } ?>
                               </div>
                            </div>
+                           <!-- END Control -->
+                           <div class="control-group">
+                              <label class="control-label"><?php echo $entry_training_description; ?></label>
+                              <div class="controls">
+                                 <textarea class="span6 m-wrap" rows="3" name="training_description" id="training_description"><?php echo $training_description; ?></textarea>
+                              </div>
+                           </div>
+                           <!-- END Control -->
+                           <div class="control-group">
+                              <label class="control-label"><?php echo $entry_training_type; ?></label>
+                              <div class="controls">
+                                 <input type="text" class="span6 m-wrap" name="training_type" value="<?php echo $training_type; ?>" id="training_type" />
+                              </div>
+                           </div>
+                           <!-- END Control -->
+                           <div class="control-group">
+                              <label class="control-label"><?php echo $entry_training_time; ?>*</label>
+                              <div class="controls">
+                                 <input type="text" class="span6 m-wrap" name="training_time" value="<?php echo $training_time; ?>" id="training_time" />
+                                 <?php if ($error_training_time) { ?>
+                                 <span class="help-inline" style="color:red;"><?php echo $error_training_time; ?></span>
+                                 <?php } ?>
+                              </div>
+                           </div>
+                           <!-- END Control -->
+                           <div class="control-group">
+                              <label class="control-label"><?php echo $entry_training_duration; ?>*</label>
+                              <div class="controls">
+                                 <input type="text" class="span6 m-wrap" name="training_duration" value="<?php echo $training_duration; ?>" id="training_duration" />
+                                 <?php if ($error_training_duration) { ?>
+                                 <span class="help-inline" style="color:red;"><?php echo $error_training_duration; ?></span>
+                                 <?php } ?>
+                              </div>
+                           </div>
+                           <!-- END Control -->
+                           <div class="control-group">
+                              <label class="control-label"><?php echo $entry_training_location; ?>*</label>
+                              <div class="controls">
+                                 <input type="text" class="span6 m-wrap" name="training_location" value="<?php echo $training_location; ?>" id="training_location" />
+                                 <?php if ($error_training_location) { ?>
+                                 <span class="help-inline" style="color:red;"><?php echo $error_training_location; ?></span>
+                                 <?php } ?>
+                              </div>
+                           </div>
+                           <!-- END Control -->
+                           <div class="control-group">
+                              <label class="control-label"><?php echo $entry_training_cost; ?></label>
+                              <div class="controls">
+                                 <input type="text" class="span6 m-wrap" name="training_cost" value="<?php echo $training_cost; ?>" id="training_cost" />
+                              </div>
+                           </div>
+                           <!-- END Control -->
+                           <div class="control-group">
+                              <label class="control-label"><?php echo $entry_training_instructor; ?></label>
+                              <div class="controls">
+                                 <input type="text" class="span6 m-wrap" name="training_instructor" value="<?php echo $training_instructor; ?>" id="training_instructor" />
+                              </div>
+                           </div>
+                           <!-- END Control -->
                            
-                           <div class="control-group">
-                              <label class="control-label"><?php echo $entry_type; ?></label>
-                              <div class="controls">
-                                 <input type="text" class="span6 m-wrap" name="type" value="<?php echo $type; ?>" id="type" />
-                              </div>
-                           </div>
-                           
-                           <div class="control-group">
-                              <label class="control-label"><?php echo $entry_date; ?></label>
-                              <div class="controls">
-                                 <input type="text" class="span6 m-wrap date-picker" name="date" value="<?php echo $date; ?>" id="date" />
-                                 <?php if ($error_date) { ?>
-                                 <span class="help-inline" style="color:red;"><?php echo $error_date; ?></span>
-              					 <?php } ?>
-                              </div>
-                           </div>
-                           <div class="control-group">
-                              <label class="control-label"><?php echo $entry_duration; ?></label>
-                              <div class="controls">
-                                 <input type="text" class="span6 m-wrap" name="duration" value="<?php echo $duration; ?>" id="duration" />
-                                 <?php if ($error_duration) { ?>
-                                 <span class="help-inline" style="color:red;"><?php echo $error_duration; ?></span>
-              					 <?php } ?>
-                              </div>
-                           </div>
-                           <div class="control-group">
-                              <label class="control-label"><?php echo $entry_location; ?></label>
-                              <div class="controls">
-             					 <select name="location" class="span6 m-wrap" id="location">
-					                <?php foreach ($locations as $location) { ?>
-					                <?php  echo $location['location_name']; ?>
-					                <?php if ($location['location_name'] == $trng_location) { ?>
-					                <option value="<?php echo $location['location_name']; ?>" selected="selected"><?php echo $location['location_name']; ?></option>
-					                <?php } else { ?>
-					                <option value="<?php echo $location['location_name']; ?>"><?php echo $location['location_name']; ?></option>
-					                <?php } ?>
-					                <?php } ?>
-					              </select>
-                              </div>
-                           </div>
-                              </div>
-                           </div>
                         </form>
                         <!-- END FORM -->
                      </div>

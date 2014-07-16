@@ -25,6 +25,38 @@ class ControllerTrainingTraining extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 	
 			$url = '';
+
+			if (isset($this->request->get['filter_training_title'])) {
+				$url .= '&filter_training_title=' . urlencode(html_entity_decode($this->request->get['filter_training_title'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_type'])) {
+				$url .= '&filter_training_type=' . urlencode(html_entity_decode($this->request->get['filter_training_type'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_time'])) {
+				$url .= '&filter_training_time=' . urlencode(html_entity_decode($this->request->get['filter_training_time'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_location'])) {
+				$url .= '&filter_training_location=' . urlencode(html_entity_decode($this->request->get['filter_training_location'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_duration'])) {
+				$url .= '&filter_training_duration=' . urlencode(html_entity_decode($this->request->get['filter_training_duration'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_cost'])) {
+				$url .= '&filter_training_cost=' . urlencode(html_entity_decode($this->request->get['filter_training_cost'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_instructor'])) {
+				$url .= '&filter_training_instructor=' . urlencode(html_entity_decode($this->request->get['filter_training_instructor'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_createdon'])) {
+				$url .= '&filter_createdon=' . urlencode(html_entity_decode($this->request->get['filter_createdon'], ENT_QUOTES, 'UTF-8'));
+			}
 	
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
@@ -52,11 +84,43 @@ class ControllerTrainingTraining extends Controller {
 		$this->load->model('training/training');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_training_training->editTraining($this->request->get['trng_code'], $this->request->post);
+			$this->model_training_training->editTraining($this->request->get['id'], $this->request->post);
 
-			$this->session->data['success'] = $this->language->get('text_success');
+			$this->session->data['success'] = $this->language->get('text_success_update');
 
 			$url = '';
+
+			if (isset($this->request->get['filter_training_title'])) {
+				$url .= '&filter_training_title=' . urlencode(html_entity_decode($this->request->get['filter_training_title'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_type'])) {
+				$url .= '&filter_training_type=' . urlencode(html_entity_decode($this->request->get['filter_training_type'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_time'])) {
+				$url .= '&filter_training_time=' . urlencode(html_entity_decode($this->request->get['filter_training_time'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_location'])) {
+				$url .= '&filter_training_location=' . urlencode(html_entity_decode($this->request->get['filter_training_location'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_duration'])) {
+				$url .= '&filter_training_duration=' . urlencode(html_entity_decode($this->request->get['filter_training_duration'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_cost'])) {
+				$url .= '&filter_training_cost=' . urlencode(html_entity_decode($this->request->get['filter_training_cost'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_instructor'])) {
+				$url .= '&filter_training_instructor=' . urlencode(html_entity_decode($this->request->get['filter_training_instructor'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_createdon'])) {
+				$url .= '&filter_createdon=' . urlencode(html_entity_decode($this->request->get['filter_createdon'], ENT_QUOTES, 'UTF-8'));
+			}
 
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
@@ -84,13 +148,45 @@ class ControllerTrainingTraining extends Controller {
 		$this->load->model('training/training');
 
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
-			foreach ($this->request->post['selected'] as $trng_code) {
-				$this->model_training_training->deleteTraining($trng_code);
+			foreach ($this->request->post['selected'] as $id) {
+				$this->model_training_training->deleteTraining($id);
 			}
 
-			$this->session->data['success'] = $this->language->get('text_success');
+			$this->session->data['success'] = $this->language->get('text_success_delete');
 
 			$url = '';
+
+			if (isset($this->request->get['filter_training_title'])) {
+				$url .= '&filter_training_title=' . urlencode(html_entity_decode($this->request->get['filter_training_title'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_type'])) {
+				$url .= '&filter_training_type=' . urlencode(html_entity_decode($this->request->get['filter_training_type'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_time'])) {
+				$url .= '&filter_training_time=' . urlencode(html_entity_decode($this->request->get['filter_training_time'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_location'])) {
+				$url .= '&filter_training_location=' . urlencode(html_entity_decode($this->request->get['filter_training_location'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_duration'])) {
+				$url .= '&filter_training_duration=' . urlencode(html_entity_decode($this->request->get['filter_training_duration'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_cost'])) {
+				$url .= '&filter_training_cost=' . urlencode(html_entity_decode($this->request->get['filter_training_cost'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_training_instructor'])) {
+				$url .= '&filter_training_instructor=' . urlencode(html_entity_decode($this->request->get['filter_training_instructor'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['filter_createdon'])) {
+				$url .= '&filter_createdon=' . urlencode(html_entity_decode($this->request->get['filter_createdon'], ENT_QUOTES, 'UTF-8'));
+			}
 
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
@@ -248,7 +344,7 @@ class ControllerTrainingTraining extends Controller {
 		//Bread Crumb End
 		$this->data['insert'] = $this->url->link('training/training/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('training/training/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-	
+		$this->data['resetSearch'] = $this->url->link('training/training', 'token=' . $this->session->data['token'] , 'SSL');
 		$this->data['trainings'] = array();
 	
 		$data = array(
@@ -451,13 +547,17 @@ class ControllerTrainingTraining extends Controller {
 		$this->response->setOutput($this->render());
 	}
 	protected function getForm() {
+
 		$this->data['heading_title'] = $this->language->get('heading_title');
-		$this->data['entry_code'] = $this->language->get('entry_code');
-		$this->data['entry_name'] = $this->language->get('entry_name');
-		$this->data['entry_type'] = $this->language->get('entry_type');
-		$this->data['entry_date'] = $this->language->get('entry_date');
-		$this->data['entry_duration'] = $this->language->get('entry_duration');
-		$this->data['entry_location'] = $this->language->get('entry_location');
+
+		$this->data['entry_training_title'] 		= $this->language->get('entry_training_title');
+		$this->data['entry_training_description'] 	= $this->language->get('entry_training_description');
+		$this->data['entry_training_type'] 			= $this->language->get('entry_training_type');
+		$this->data['entry_training_time'] 			= $this->language->get('entry_training_time');
+		$this->data['entry_training_duration'] 		= $this->language->get('entry_training_duration');
+		$this->data['entry_training_location'] 		= $this->language->get('entry_training_location');
+		$this->data['entry_training_cost'] 			= $this->language->get('entry_training_cost');
+		$this->data['entry_training_instructor'] 	= $this->language->get('entry_training_instructor');
 		
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -467,39 +567,65 @@ class ControllerTrainingTraining extends Controller {
 		} else {
 			$this->data['error_warning'] = '';
 		}
-		if (isset($this->error['code'])) {
-			$this->data['error_code'] = $this->error['code'];
+		if (isset($this->error['training_title'])) {
+			$this->data['error_training_title'] = $this->error['training_title'];
 		} else {
-			$this->data['error_code'] = '';
-		}
-	
-		if (isset($this->error['date'])) {
-			$this->data['error_date'] = $this->error['date'];
-		} else {
-			$this->data['error_date'] = '';
-		}
-	
-		if (isset($this->error['duration'])) {
-			$this->data['error_duration'] = $this->error['duration'];
-		} else {
-			$this->data['error_duration'] = '';
-		}
-	
-		if (isset($this->error['location'])) {
-			$this->data['error_location'] = $this->error['location'];
-		} else {
-			$this->data['error_location'] = '';
-		}
-	
-		if (isset($this->error['name'])) {
-			$this->data['error_name'] = $this->error['name'];
-		} else {
-			$this->data['error_name'] = '';
+			$this->data['error_training_title'] = '';
 		}
 		
+		if (isset($this->error['training_time'])) {
+			$this->data['error_training_time'] = $this->error['training_time'];
+		} else {
+			$this->data['error_training_time'] = '';
+		}
+	
+		if (isset($this->error['training_duration'])) {
+			$this->data['error_training_duration'] = $this->error['training_duration'];
+		} else {
+			$this->data['error_training_duration'] = '';
+		}
+	
+		if (isset($this->error['training_location'])) {
+			$this->data['error_training_location'] = $this->error['training_location'];
+		} else {
+			$this->data['error_training_location'] = '';
+		}
+	
 			
 		$url = '';
 	
+		if (isset($this->request->get['filter_training_title'])) {
+			$url .= '&filter_training_title=' . urlencode(html_entity_decode($this->request->get['filter_training_title'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_training_type'])) {
+			$url .= '&filter_training_type=' . urlencode(html_entity_decode($this->request->get['filter_training_type'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_training_time'])) {
+			$url .= '&filter_training_time=' . urlencode(html_entity_decode($this->request->get['filter_training_time'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_training_location'])) {
+			$url .= '&filter_training_location=' . urlencode(html_entity_decode($this->request->get['filter_training_location'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_training_duration'])) {
+			$url .= '&filter_training_duration=' . urlencode(html_entity_decode($this->request->get['filter_training_duration'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_training_cost'])) {
+			$url .= '&filter_training_cost=' . urlencode(html_entity_decode($this->request->get['filter_training_cost'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_training_instructor'])) {
+			$url .= '&filter_training_instructor=' . urlencode(html_entity_decode($this->request->get['filter_training_instructor'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_createdon'])) {
+			$url .= '&filter_createdon=' . urlencode(html_entity_decode($this->request->get['filter_createdon'], ENT_QUOTES, 'UTF-8'));
+		}
+
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
 		}
@@ -526,96 +652,82 @@ class ControllerTrainingTraining extends Controller {
 				'separator' => ' :: '
 		);
 	
-		if (!isset($this->request->get['trng_code'])) {
+		if (!isset($this->request->get['id'])) {
 			$this->data['action'] = $this->url->link('training/training/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$this->data['action'] = $this->url->link('training/training/update', 'token=' . $this->session->data['token'] . '&trng_code=' . $this->request->get['trng_code'] . $url, 'SSL');
+			$this->data['action'] = $this->url->link('training/training/update', 'token=' . $this->session->data['token'] . '&id=' . $this->request->get['id'] . $url, 'SSL');
 		}
 	
 		$this->data['cancel'] = $this->url->link('training/training', 'token=' . $this->session->data['token'] . $url, 'SSL');
 	
-		if (isset($this->request->get['trng_code']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-			$training_info = $this->model_training_training->getTraining($this->request->get['trng_code']);
+		if (isset($this->request->get['id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+			$training_info = $this->model_training_training->getTraining($this->request->get['id']);
 		}
 	
-		/*if (isset($this->request->post['username'])) {
-			$this->data['username'] = $this->request->post['username'];
-		} elseif (!empty($user_info)) {
-			$this->data['username'] = $user_info['username'];
-		} else {
-			$this->data['username'] = '';
-		}
-	
-		if (isset($this->request->post['password'])) {
-			$this->data['password'] = $this->request->post['password'];
-		} else {
-			$this->data['password'] = '';
-		}
-	
-		if (isset($this->request->post['confirm'])) {
-			$this->data['confirm'] = $this->request->post['confirm'];
-		} else {
-			$this->data['confirm'] = '';
-		}*/
-		if (isset($this->request->post['code'])) {
-			$this->data['name'] = $this->request->post['code'];
+		if (isset($this->request->post['training_title'])) {
+			$this->data['training_title'] = $this->request->post['training_title'];
 		} elseif (!empty($training_info)) {
-			$this->data['code'] = $training_info['code'];
+			$this->data['training_title'] = $training_info['training_title'];
 		} else {
-			$this->data['code'] = '';
-		}
-		if (isset($this->request->post['name'])) {
-			$this->data['name'] = $this->request->post['name'];
-		} elseif (!empty($training_info)) {
-			$this->data['name'] = $training_info['name'];
-		} else {
-			$this->data['name'] = '';
-		}
-	
-		if (isset($this->request->post['type'])) {
-			$this->data['type'] = $this->request->post['type'];
-		} elseif (!empty($training_info)) {
-			$this->data['type'] = $training_info['type'];
-		} else {
-			$this->data['type'] = '';
-		}
-	
-		if (isset($this->request->post['date'])) {
-			$this->data['date'] = $this->request->post['date'];
-		} elseif (!empty($training_info)) {
-			$this->data['date'] = $training_info['date'];
-		} else {
-			$this->data['date'] = '';
-		}
-		if (isset($this->request->post['duration'])) {
-			$this->data['duration'] = $this->request->post['duration'];
-		} elseif (!empty($training_info)) {
-			$this->data['duration'] = $training_info['duration'];
-		} else {
-			$this->data['duration'] = '';
+			$this->data['training_title'] = '';
 		}
 		
-		$this->data['locations'] = $this->model_training_training->getTrainingLocations();
+		if (isset($this->request->post['training_description'])) {
+			$this->data['training_description'] = $this->request->post['training_description'];
+		} elseif (!empty($training_info)) {
+			$this->data['training_description'] = $training_info['training_description'];
+		} else {
+			$this->data['training_description'] = '';
+		}
+
+		if (isset($this->request->post['training_type'])) {
+			$this->data['training_type'] = $this->request->post['training_type'];
+		} elseif (!empty($training_info)) {
+			$this->data['training_type'] = $training_info['training_type'];
+		} else {
+			$this->data['training_type'] = '';
+		}
 		
-	if (isset($this->request->post['location'])) {
-			$this->data['trng_location'] = $this->request->post['location'];
+		if (isset($this->request->post['training_time'])) {
+			$this->data['training_time'] = $this->request->post['training_time'];
 		} elseif (!empty($training_info)) {
-			$this->data['trng_location'] = $training_info['location'];
+			$this->data['training_time'] = $training_info['training_time'];
 		} else {
-			$this->data['trng_location'] = 0;
+			$this->data['training_time'] = '';
 		}
-		//$this->load->model('user/user_group');
-	
-		//$this->data['user_groups'] = $this->model_user_user_group->getUserGroups();
-	
-		if (isset($this->request->post['status'])) {
-			$this->data['status'] = $this->request->post['status'];
+		
+		if (isset($this->request->post['training_duration'])) {
+			$this->data['training_duration'] = $this->request->post['training_duration'];
 		} elseif (!empty($training_info)) {
-			$this->data['status'] = $training_info['status'];
+			$this->data['training_duration'] = $training_info['training_duration'];
 		} else {
-			$this->data['status'] = 0;
+			$this->data['training_duration'] = '';
 		}
-	
+		
+		if (isset($this->request->post['training_location'])) {
+			$this->data['training_location'] = $this->request->post['training_location'];
+		} elseif (!empty($training_info)) {
+			$this->data['training_location'] = $training_info['training_location'];
+		} else {
+			$this->data['training_location'] = '';
+		}
+		
+		if (isset($this->request->post['training_cost'])) {
+			$this->data['training_cost'] = $this->request->post['training_cost'];
+		} elseif (!empty($training_info)) {
+			$this->data['training_cost'] = $training_info['training_cost'];
+		} else {
+			$this->data['training_cost'] = '';
+		}
+		
+		if (isset($this->request->post['training_instructor'])) {
+			$this->data['training_instructor'] = $this->request->post['training_instructor'];
+		} elseif (!empty($training_info)) {
+			$this->data['training_instructor'] = $training_info['training_instructor'];
+		} else {
+			$this->data['training_instructor'] = '';
+		}
+
 		$this->template = 'training/training_form.tpl';
 		$this->children = array(
 				'common/header',
@@ -630,38 +742,22 @@ class ControllerTrainingTraining extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 	
-		/*if ((utf8_strlen($this->request->post['username']) < 3) || (utf8_strlen($this->request->post['username']) > 20)) {
-			$this->error['username'] = $this->language->get('error_username');
-		}*/
-	
-		$training_info = $this->model_training_training->getTrainingByName($this->request->post['name']);
-	
-		if (!isset($this->request->get['trng_code'])) {
-			if ($training_info) {
-				$this->error['warning'] = $this->language->get('error_exists');
-			}
-		} else {
-			if ($training_info && ($this->request->get['trng_code'] != $training_info['trng_code'])) {
-				$this->error['warning'] = $this->language->get('error_exists');
-			}
+		if ((utf8_strlen($this->request->post['training_title']) < 1) || (utf8_strlen($this->request->post['training_title']) > 100)) {
+			$this->error['training_title'] = $this->language->get('error_training_title');
 		}
-	
-		if ((utf8_strlen($this->request->post['name']) < 1) || (utf8_strlen($this->request->post['name']) > 32)) {
-			$this->error['name'] = $this->language->get('error_name');
+
+		if ((utf8_strlen($this->request->post['training_time']) < 1) || (utf8_strlen($this->request->post['training_time']) > 100)) {
+			$this->error['training_time'] = $this->language->get('error_training_time');
 		}
-	
-		
-	
-		/*if ($this->request->post['password'] || (!isset($this->request->get['user_id']))) {
-			if ((utf8_strlen($this->request->post['password']) < 4) || (utf8_strlen($this->request->post['password']) > 20)) {
-				$this->error['password'] = $this->language->get('error_password');
-			}
-	
-			if ($this->request->post['password'] != $this->request->post['confirm']) {
-				$this->error['confirm'] = $this->language->get('error_confirm');
-			}
-		}*/
-	
+
+		if ((utf8_strlen($this->request->post['training_duration']) < 1) || (utf8_strlen($this->request->post['training_duration']) > 100)) {
+			$this->error['training_duration'] = $this->language->get('error_training_duration');
+		}
+
+		if ((utf8_strlen($this->request->post['training_location']) < 1) || (utf8_strlen($this->request->post['training_location']) > 100)) {
+			$this->error['training_location'] = $this->language->get('error_training_location');
+		}
+
 		if (!$this->error) {
 			return true;
 		} else {

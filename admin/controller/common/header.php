@@ -119,6 +119,10 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_trainings'] = $this->language->get('text_trainings');
 		$this->data['text_training'] = $this->language->get('text_training');
 
+		// Employee navigations listed here
+		$this->data['text_employees'] = $this->language->get('text_employees');
+		$this->data['text_employee'] = $this->language->get('text_employee');
+
 		$this->data['text_paypal_express'] = $this->language->get('text_paypal_manage');
 		$this->data['text_paypal_express_search'] = $this->language->get('text_paypal_search');
 		$this->data['text_recurring_profile'] = $this->language->get('text_recurring_profile');
@@ -199,6 +203,8 @@ class ControllerCommonHeader extends Controller {
 			$this->data['zone'] = $this->url->link('localisation/zone', 'token=' . $this->session->data['token'], 'SSL');
 
 			$this->data['training'] = $this->url->link('training/training', 'token=' . $this->session->data['token'], 'SSL');
+
+			$this->data['employee'] = $this->url->link('employee/employee', 'token=' . $this->session->data['token'], 'SSL');
 
 			$this->data['openbay_show_menu'] = $this->config->get('openbaymanager_show_menu');
 		

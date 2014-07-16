@@ -1,11 +1,29 @@
 <?php
 class ModelTrainingTraining extends Model {
 public function addTraining($data) {
-		$this->db->query("INSERT INTO `" . DB_PREFIX . "training` SET trng_name = '" . $this->db->escape($data['name']) . "', trng_type = '" . $this->db->escape($data['type']) . "', trng_date = '" . $this->db->escape($data['date']) . "', trng_duration = '" . $this->db->escape($data['duration'])  ."', trng_location = '" . $this->db->escape($data['location'])."'");
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "training` SET training_title = '" . $this->db->escape($data['training_title']) . "', 
+																	  training_description = '" . $this->db->escape($data['training_description']) . "', 
+																	  training_type = '" . $this->db->escape($data['training_type']) . "', 
+																	  training_time = '" . $this->db->escape($data['training_time']) . "', 
+																	  training_duration = '" . $this->db->escape($data['training_duration']) . "', 
+																	  training_location = '" . $this->db->escape($data['training_location']) . "', 
+																	  training_cost = '" . $this->db->escape($data['training_cost']) . "', 
+																	  training_instructor = '" . $this->db->escape($data['training_instructor'])  ."', 
+																	  createdon = '" .date('Y-m-d H:i:s')."'");
 	}
 
-	public function editTraining($trng_code, $data) {
-		$this->db->query("UPDATE `" . DB_PREFIX . "training` SET trng_name = '" . $this->db->escape($data['name']) . "', trng_type = '" . $this->db->escape($data['type']) . "', trng_date = '" . $this->db->escape($data['date']) . "', trng_duration = '" . $this->db->escape($data['duration']) . "', trng_location = '" . $this->db->escape($data['location']) . "' WHERE trng_code = '" . (int)$code . "'");
+	public function editTraining($id, $data) {
+
+		$this->db->query("UPDATE `" . DB_PREFIX . "training` SET training_title = '" . $this->db->escape($data['training_title']) . "', 
+																	  training_description = '" . $this->db->escape($data['training_description']) . "', 
+																	  training_type = '" . $this->db->escape($data['training_type']) . "', 
+																	  training_time = '" . $this->db->escape($data['training_time']) . "', 
+																	  training_duration = '" . $this->db->escape($data['training_duration']) . "', 
+																	  training_location = '" . $this->db->escape($data['training_location']) . "', 
+																	  training_cost = '" . $this->db->escape($data['training_cost']) . "', 
+																	  training_instructor = '" . $this->db->escape($data['training_instructor'])  ."' 
+																  WHERE id = '" . (int)$id . "'");
+		
 		
 	}
 	public function getTrainingByName($name) {
@@ -13,11 +31,13 @@ public function addTraining($data) {
 
 		return $query->row;
 	}
-	public function deleteTraining($trng_code) {
-		$this->db->query("DELETE FROM `" . DB_PREFIX . "training` WHERE trng_code = '" . (int)$trng_code . "'");
+	public function deleteTraining($id) {
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "training` WHERE id = '" . (int)$id . "'");
+
+		//Need to delete Training relationship information here
 	}
-	public function getTraining($code) {
-		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "training` WHERE trng_code = '" . (int)$code. "'");
+	public function getTraining($id) {
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "training` WHERE id = '" . (int)$id. "'");
 
 		return $query->row;
 	}

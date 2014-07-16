@@ -59,6 +59,7 @@
    <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
    <script type="text/javascript" src="assets/js/underscore-1.5.2.min.js"></script>
    <script type="text/javascript" src="assets/js/jquery.scrollTableBody-1.0.0.js"></script>
+   
 	<script src="assets/js/app.js"></script>		
 	<script>
 		jQuery(document).ready(function() {			
@@ -167,6 +168,16 @@ $(document).ready(function(){
 					<ul class="sub">
 						<li ><a href="<?php echo $user; ?>"><?php echo $text_user; ?></a></li>
 						<li ><a href="<?php echo $user_group; ?>"><?php echo $text_user_group; ?></a></li>
+					</ul>
+				</li>
+				<li class="has-sub ">
+					<a href="javascript:;">
+					<i class="icon-star-empty"></i> 
+					<span class="title"><?php echo $text_employees; ?></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub">
+						<li ><a href="<?php echo $employee; ?>"><?php echo $text_employee; ?></a></li>
 					</ul>
 				</li>
 				<li class="has-sub ">

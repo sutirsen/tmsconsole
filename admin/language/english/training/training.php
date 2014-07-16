@@ -3,7 +3,11 @@
 $_['heading_title']     = 'Trainings';
 
 // Text
-$_['text_success']      = 'Success: You have modified employees!';
+$_['text_success']      	   = ' You inserted a new training information!';
+
+$_['text_success_update']      = ' You have modified training information!';
+
+$_['text_success_delete']      = ' You have deleted training information!';
 
 // Column
 $_['text_column_training_title']  	  		= 'Name';
@@ -35,12 +39,10 @@ $_['entry_training_instructor'] 	= 'Instructor:';
 
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify users!';
-$_['error_code']    = 'Warning: You can not delete your own account!';
-$_['error_name']    = 'Warning: You can not delete your own account!';
-$_['error_type']     = 'Warning: Username is already in use!';
-$_['error_date']   = 'Username must be between 3 and 20 characters!';
-$_['error_duration']   = 'Password must be between 4 and 20 characters!';
-$_['error_location']    = 'Password and password confirmation do not match!';
+$_['error_permission'] 			  = 'Warning: You do not have permission to modify users!';
+$_['error_training_title']    	  = 'Error: Please give a training title!';
+$_['error_training_time']    	  = 'Error: Please give the starting date time!';
+$_['error_training_duration']     = 'Error: Please give the duration!';
+$_['error_training_location']     = 'Error: Please give the training location!';
 
 ?>

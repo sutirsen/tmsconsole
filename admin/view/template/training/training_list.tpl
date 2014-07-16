@@ -26,7 +26,126 @@
 					</div>
 				</div>
 				<!-- END PAGE HEADER-->
-				<!-- BEGIN PAGE CONTENT-->				
+				<!-- BEGIN PAGE CONTENT-->	
+				<div class="row-fluid">
+					<div class="span12 ">
+						<!-- BEGIN Portlet PORTLET-->
+						<div class="portlet box green">
+							<div class="portlet-title">
+								<h4><i class="icon-reorder"></i>Search</h4>
+								<div class="tools">
+									<a href="javascript:;" <?php if($filter_training_title != ""
+															|| $filter_training_type != ""
+															|| $filter_training_time != ""
+															|| $filter_training_duration != ""
+															|| $filter_training_location != ""
+															|| $filter_training_cost != ""
+															|| $filter_training_instructor != ""
+															|| $filter_createdon != "") { ?>class="collapse"<?php } else { ?>class="expand"<?php } ?> ></a>
+									<a href="<?php echo $resetSearch; ?>" class="reloadWithoutHandler"></a>
+								</div>
+							</div>
+							<div class="portlet-body <?php if($filter_training_title != ""
+															|| $filter_training_type != ""
+															|| $filter_training_time != ""
+															|| $filter_training_duration != ""
+															|| $filter_training_location != ""
+															|| $filter_training_cost != ""
+															|| $filter_training_instructor != ""
+															|| $filter_createdon != "") { ?><?php } else { echo "hide"; } ?>">
+								<h3 class="form-section">Filters</h3>
+								<div class="row-fluid">
+								   <div class="span6 ">
+								      <div class="control-group">
+								         <label class="control-label">Title</label>
+								         <div class="controls">
+								            <input type="text" class="m-wrap span12" name="filter_training_title" value="<?php echo $filter_training_title; ?>" />
+								         </div>
+								      </div>
+								   </div>
+								   <!--/span-->
+								   <div class="span6 ">
+								      <div class="control-group">
+								         <label class="control-label">Type</label>
+								         <div class="controls">
+								            <input type="text" class="m-wrap span12" name="filter_training_type" value="<?php echo $filter_training_type; ?>" />
+								         </div>
+								      </div>
+								   </div>
+								   <!--/span-->
+								</div>
+								<!--/row-->
+								<div class="row-fluid">
+								   <div class="span6 ">
+								      <div class="control-group">
+								         <label class="control-label">Time</label>
+								         <div class="controls">
+								            <input type="text" class="m-wrap span12" name="filter_training_time" value="<?php echo $filter_training_time; ?>" />
+								         </div>
+								      </div>
+								   </div>
+								   <!--/span-->
+								   <div class="span6 ">
+								      <div class="control-group">
+								         <label class="control-label">Duration</label>
+								         <div class="controls">
+								            <input type="text" class="m-wrap span12" name="filter_training_duration" value="<?php echo $filter_training_duration; ?>" />
+								         </div>
+								      </div>
+								   </div>
+								   <!--/span-->
+								</div>
+								<!--/row-->
+								<div class="row-fluid">
+								   <div class="span6 ">
+								      <div class="control-group">
+								         <label class="control-label">Location</label>
+								         <div class="controls">
+								            <input type="text" class="m-wrap span12" name="filter_training_location" value="<?php echo $filter_training_location; ?>" />
+								         </div>
+								      </div>
+								   </div>
+								   <!--/span-->
+								   <div class="span6 ">
+								      <div class="control-group">
+								         <label class="control-label">Cost</label>
+								         <div class="controls">
+								            <input type="text" class="m-wrap span12" name="filter_training_cost" value="<?php echo $filter_training_cost; ?>" />
+								         </div>
+								      </div>
+								   </div>
+								   <!--/span-->
+								</div>
+								<!--/row-->
+								<div class="row-fluid">
+								   <div class="span6 ">
+								      <div class="control-group">
+								         <label class="control-label">Instructor</label>
+								         <div class="controls">
+								            <input type="text" class="m-wrap span12" name="filter_training_instructor" value="<?php echo $filter_training_instructor; ?>" />
+								         </div>
+								      </div>
+								   </div>
+								   <!--/span-->
+								   <div class="span6 ">
+								      <div class="control-group">
+								         <label class="control-label">Created On</label>
+								         <div class="controls">
+								            <input type="text" class="m-wrap span12" name="filter_createdon" value="<?php echo $filter_createdon; ?>" />
+								         </div>
+								      </div>
+								   </div>
+								   <!--/span-->
+								</div>
+								<!--/row-->
+								<div class="form-actions">
+                                       <button onclick="filter();" class="btn blue"><i class="icon-ok"></i> <?php echo $button_filter; ?></button>
+                                </div>
+							</div>
+						</div>
+						<!-- END Portlet PORTLET-->
+					</div>
+				</div>			
 				<div class="row-fluid">
 					<div class="span12">
 					  <?php if ($error_warning) { ?>
@@ -120,20 +239,7 @@
 				            </tr>
 				          </thead>
 				          <tbody>
-				          	<tr class="filter">
-				          	  <td></td>
-				          	  <td><input type="text" name="filter_training_title" value="<?php echo $filter_training_title; ?>" /></td>
-				          	  <td><input type="text" name="filter_training_type" value="<?php echo $filter_training_type; ?>" /></td>
-				          	  <td><input type="text" name="filter_training_time" value="<?php echo $filter_training_time; ?>" /></td>
-				          	  <td><input type="text" name="filter_training_duration" value="<?php echo $filter_training_duration; ?>" /></td>
-				          	  <td><input type="text" name="filter_training_location" value="<?php echo $filter_training_location; ?>" /></td>
-				          	  <td><input type="text" name="filter_training_cost" value="<?php echo $filter_training_cost; ?>" /></td>
-				          	  <td><input type="text" name="filter_training_instructor" value="<?php echo $filter_training_instructor; ?>" /></td>
-				          	  <td><input type="text" name="filter_createdon" value="<?php echo $filter_createdon; ?>" /></td>
-				          	  
-				          	  <td align="right"><a onclick="filter();" class="button"><?php echo $button_filter; ?></a></td>
-				          	</tr>
-				            <?php if ($trainings) { ?>
+				          	<?php if ($trainings) { ?>
 				            <?php foreach ($trainings as $training) { ?>
 				            <tr>
 				              <td style="text-align: center;"><?php if ($training['selected']) { ?>
